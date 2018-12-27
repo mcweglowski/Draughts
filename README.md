@@ -1,0 +1,2 @@
+# Draughts
+# Classic Draughts game
