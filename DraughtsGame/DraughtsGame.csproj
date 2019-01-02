@@ -43,7 +43,8 @@
   <ItemGroup>
     <Compile Include="Cheesboard.cs" />
     <Compile Include="DraughtsField.cs" />
-    <Compile Include="CheesboartInitializer.cs" />
+    <Compile Include="CheesboardInitializer.cs" />
+    <Compile Include="ICheesboard.cs" />
     <Compile Include="PawnMove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

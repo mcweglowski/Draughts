@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class Cheesboard
+    public class Cheesboard : ICheesboard
     {
-        DraughtsField[,] cheesboard = new DraughtsField[8, 8];
+        private DraughtsField[,] cheesboard = new DraughtsField[8, 8];
 
         public DraughtsField GetFieldState(string v)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetFieldState(string position, DraughtsField fieldState)
         {
             throw new NotImplementedException();
         }

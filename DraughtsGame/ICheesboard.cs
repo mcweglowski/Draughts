@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    class CheesboartInitializer
+    public interface ICheesboard
     {
-        public void InitNewCheesboard()
-        {
-
-        }
+        DraughtsField GetFieldState(string position);
+        void SetFieldState(string position, DraughtsField fieldState);
     }
 }
