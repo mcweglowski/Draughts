@@ -48,12 +48,22 @@ namespace DraughtsGame.Tests
         public int whiteFieldsCount = 0;
         public int otherFieldsCount = 0;
 
-        public DraughtsField GetFieldState(string position)
+        public int GetCheesboardHeight()
+        {
+            return 8;
+        }
+
+        public int GetCheesboardWith()
+        {
+            return 8;
+        }
+
+        public DraughtsField GetFieldState(int row, int column)
         {
             throw new NotImplementedException();
         }
 
-        public void SetFieldState(string position, DraughtsField fieldState)
+        public void SetFieldState(int row, int column, DraughtsField fieldState)
         {
             switch (fieldState)
             {
