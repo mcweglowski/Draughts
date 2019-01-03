@@ -17,7 +17,7 @@ namespace DraughtsGame
             return cheesboard.GetLength(HeightDimension);
         }
 
-        public int GetCheesboardWith()
+        public int GetCheesboardWidth()
         {
             return cheesboard.GetLength(WidthDimension);
         }

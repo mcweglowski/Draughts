@@ -75,7 +75,7 @@ namespace DraughtsGame.Tests
             return 8;
         }
 
-        public int GetCheesboardWith()
+        public int GetCheesboardWidth()
         {
             return 8;
         }

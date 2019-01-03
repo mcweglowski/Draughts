@@ -10,7 +10,7 @@ namespace DraughtsGame
     {
         DraughtsField GetFieldState(int row, int column);
         void SetFieldState(int row, int column, DraughtsField fieldState);
-        int GetCheesboardWith();
+        int GetCheesboardWidth();
         int GetCheesboardHeight();
     }
 }

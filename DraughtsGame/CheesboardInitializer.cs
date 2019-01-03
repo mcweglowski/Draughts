@@ -21,7 +21,7 @@ namespace DraughtsGame
             for (int Row = 0; Row < cheesboard.GetCheesboardHeight(); Row++)
             {
                 lastFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
-                for (int Column = 0; Column < cheesboard.GetCheesboardWith(); Column++)
+                for (int Column = 0; Column < cheesboard.GetCheesboardWidth(); Column++)
                 {
                     DraughtsField newFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
                     lastFieldStatus = SetNewFieldStaus(Column, Row, newFieldStatus);
