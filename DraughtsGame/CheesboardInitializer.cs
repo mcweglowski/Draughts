@@ -17,12 +17,13 @@ namespace DraughtsGame
 
         public void InitNewCheesboard()
         {
-            DraughtsField lastFieldStatus = DraughtsField.EmptyWhite;
+            DraughtsField lastFieldStatus = DraughtsField.EmptyBlack;
             for (int Row = 0; Row < cheesboard.GetCheesboardHeight(); Row++)
             {
+                lastFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
                 for (int Column = 0; Column < cheesboard.GetCheesboardWith(); Column++)
                 {
-                    DraughtsField newFieldStatus = GetNewFieldStatus(lastFieldStatus);
+                    DraughtsField newFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
                     lastFieldStatus = SetNewFieldStaus(Column, Row, newFieldStatus);
                 }
             }
@@ -34,7 +35,7 @@ namespace DraughtsGame
             return fieldState;
         }
 
-        private DraughtsField GetNewFieldStatus(DraughtsField previousFieldState)
+        private DraughtsField GetOppositeFieldStatus(DraughtsField previousFieldState)
         {
             if (DraughtsField.EmptyWhite == previousFieldState)
                 return DraughtsField.EmptyBlack;

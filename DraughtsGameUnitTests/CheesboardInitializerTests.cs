@@ -40,6 +40,26 @@ namespace DraughtsGame.Tests
 
             Assert.AreEqual(0, cheesboard.otherFieldsCount, string.Format("Initialized cheeseboard should have 0 fields other than black or white, but it has {0} of them.", cheesboard.whiteFieldsCount));
         }
+
+        [TestMethod]
+        public void InitNewCheesboartA1FieldShouldBeEmptyBlack()
+        {
+            CheesboardStub cheesboard = new CheesboardStub();
+            CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
+            draughtsCheesboardInitializer.InitNewCheesboard();
+
+            Assert.AreEqual(DraughtsField.EmptyBlack, cheesboard.A1field, "A1 field should be EmptyBlack.");
+        }
+
+        [TestMethod]
+        public void InitNewCheesboartH8FieldShouldBeEmptyBlack()
+        {
+            CheesboardStub cheesboard = new CheesboardStub();
+            CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
+            draughtsCheesboardInitializer.InitNewCheesboard();
+
+            Assert.AreEqual(DraughtsField.EmptyBlack, cheesboard.H8field, "H8 field should be EmptyBlack.");
+        }
     }
 
     class CheesboardStub : ICheesboard
@@ -47,6 +67,8 @@ namespace DraughtsGame.Tests
         public int blackFieldsCount = 0;
         public int whiteFieldsCount = 0;
         public int otherFieldsCount = 0;
+        public DraughtsField A1field;
+        public DraughtsField H8field;
 
         public int GetCheesboardHeight()
         {
@@ -64,6 +86,25 @@ namespace DraughtsGame.Tests
         }
 
         public void SetFieldState(int row, int column, DraughtsField fieldState)
+        {
+            CountFields(fieldState);
+            SetA1Field(row, column, fieldState);
+            SetF8Field(row, column, fieldState);
+        }
+
+        private void SetF8Field(int row, int column, DraughtsField fieldState)
+        {
+            if (7 == row && 7 == column)
+                H8field = fieldState;
+        }
+
+        private void SetA1Field(int row, int column, DraughtsField fieldState)
+        {
+            if (0 == row && 0 == column)
+                A1field = fieldState;
+        }
+
+        private void CountFields(DraughtsField fieldState)
         {
             switch (fieldState)
             {
