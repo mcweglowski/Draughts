@@ -46,6 +46,7 @@
     <Compile Include="CheeseboardRow.cs" />
     <Compile Include="DraughtsField.cs" />
     <Compile Include="CheesboardInitializer.cs" />
+    <Compile Include="DraughtsGameTwoRowsInitializer.cs" />
     <Compile Include="ICheesboard.cs" />
     <Compile Include="PawnMove.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

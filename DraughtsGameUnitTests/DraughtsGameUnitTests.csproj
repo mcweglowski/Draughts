@@ -51,7 +51,7 @@
   <ItemGroup>
     <Compile Include="CheesboardInitializerTests.cs" />
     <Compile Include="CheesboardTests.cs" />
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="DraughtsGameTwoRowsInitializerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
