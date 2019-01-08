@@ -30,7 +30,7 @@ namespace DraughtsGame
 
         public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
         {
-            throw new NotImplementedException();
+            cheesboard[(int)row, (int)column] = fieldState;
         }
     }
 }
