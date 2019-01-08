@@ -17,30 +17,30 @@ namespace DraughtsGame
 
         public void InitNewCheesboard()
         {
-            DraughtsField lastFieldStatus = DraughtsField.EmptyBlack;
-            for (int Row = 0; Row < cheesboard.GetCheesboardHeight(); Row++)
+            CheeseboardField lastFieldStatus = CheeseboardField.EmptyBlack;
+            for (CheesboardRow Row = CheesboardRow.One; (int)Row < cheesboard.GetCheesboardHeight(); Row++)
             {
                 lastFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
-                for (int Column = 0; Column < cheesboard.GetCheesboardWidth(); Column++)
+                for (CheesboardColumn Column = CheesboardColumn.A; (int)Column < cheesboard.GetCheesboardWidth(); Column++)
                 {
-                    DraughtsField newFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
-                    lastFieldStatus = SetNewFieldStaus(Column, Row, newFieldStatus);
+                    CheeseboardField newFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
+                    lastFieldStatus = SetNewFieldStaus(Row, Column, newFieldStatus);
                 }
             }
         }
 
-        private DraughtsField SetNewFieldStaus(int Column, int Row, DraughtsField fieldState)
+        private CheeseboardField SetNewFieldStaus(CheesboardRow Row, CheesboardColumn Column, CheeseboardField fieldState)
         {
-            cheesboard.SetFieldState(Column, Row, fieldState);
+            cheesboard.SetFieldState(Row, Column, fieldState);
             return fieldState;
         }
 
-        private DraughtsField GetOppositeFieldStatus(DraughtsField previousFieldState)
+        private CheeseboardField GetOppositeFieldStatus(CheeseboardField previousFieldState)
         {
-            if (DraughtsField.EmptyWhite == previousFieldState)
-                return DraughtsField.EmptyBlack;
+            if (CheeseboardField.EmptyWhite == previousFieldState)
+                return CheeseboardField.EmptyBlack;
 
-            return DraughtsField.EmptyWhite;
+            return CheeseboardField.EmptyWhite;
         }
     }
 }

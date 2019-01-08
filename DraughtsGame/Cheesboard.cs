@@ -8,7 +8,8 @@ namespace DraughtsGame
 {
     public class Cheesboard : ICheesboard
     {
-        private DraughtsField[,] cheesboard = new DraughtsField[8, 8];
+
+        private CheeseboardField[,] cheesboard = new CheeseboardField[Enum.GetNames(typeof(CheesboardColumn)).Length, Enum.GetNames(typeof(CheesboardRow)).Length];
         private const int WidthDimension = 0;
         private const int HeightDimension = 1;
 
@@ -22,12 +23,12 @@ namespace DraughtsGame
             return cheesboard.GetLength(WidthDimension);
         }
 
-        public DraughtsField GetFieldState(int row, int column)
+        public CheeseboardField GetFieldState(CheesboardRow row, CheesboardColumn column)
         {
-            throw new NotImplementedException();
+            return cheesboard[(int)row, (int)column];
         }
 
-        public void SetFieldState(int row, int column, DraughtsField fieldState)
+        public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheeseboardField fieldState)
         {
             throw new NotImplementedException();
         }

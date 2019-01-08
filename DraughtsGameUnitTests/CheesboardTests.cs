@@ -32,5 +32,27 @@ namespace DraughtsGame.Tests
 
             Assert.AreEqual(expectedWidth, actualWidth, "Cheesboard height should be 8.");
         }
+
+        [TestMethod()]
+        public void GetFieldStateForA1WhenNewCheesboardShouldBeUndefined()
+        {
+            CheeseboardField expectedCheeseboardField = CheeseboardField.NotDefined;
+
+            Cheesboard cheesboard = new Cheesboard();
+            CheeseboardField actualCheeseboardField = cheesboard.GetFieldState(CheesboardRow.One, CheesboardColumn.A);
+
+            Assert.AreEqual(expectedCheeseboardField, actualCheeseboardField, "For not initialized cheesebord, first field should be undefined.");
+        }
+
+        [TestMethod()]
+        public void GetFieldStateForH8WhenNewCheesboardShouldBeUndefined()
+        {
+            CheeseboardField expectedCheeseboardField = CheeseboardField.NotDefined;
+
+            Cheesboard cheesboard = new Cheesboard();
+            CheeseboardField actualCheeseboardField = cheesboard.GetFieldState(CheesboardRow.Eight, CheesboardColumn.H);
+
+            Assert.AreEqual(expectedCheeseboardField, actualCheeseboardField, "For not initialized cheesebord, last field should be undefined.");
+        }
     }
 }
