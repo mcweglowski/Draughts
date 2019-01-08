@@ -48,7 +48,7 @@ namespace DraughtsGame.Tests
             CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
             draughtsCheesboardInitializer.InitNewCheesboard();
 
-            Assert.AreEqual(CheeseboardField.EmptyBlack, cheesboard.A1field, "A1 field should be EmptyBlack.");
+            Assert.AreEqual(CheesboardField.EmptyBlack, cheesboard.A1field, "A1 field should be EmptyBlack.");
         }
 
         [TestMethod]
@@ -58,7 +58,7 @@ namespace DraughtsGame.Tests
             CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
             draughtsCheesboardInitializer.InitNewCheesboard();
 
-            Assert.AreEqual(CheeseboardField.EmptyBlack, cheesboard.H8field, "H8 field should be EmptyBlack.");
+            Assert.AreEqual(CheesboardField.EmptyBlack, cheesboard.H8field, "H8 field should be EmptyBlack.");
         }
     }
 
@@ -67,8 +67,8 @@ namespace DraughtsGame.Tests
         public int blackFieldsCount = 0;
         public int whiteFieldsCount = 0;
         public int otherFieldsCount = 0;
-        public CheeseboardField A1field;
-        public CheeseboardField H8field;
+        public CheesboardField A1field;
+        public CheesboardField H8field;
 
         public int GetCheesboardHeight()
         {
@@ -80,38 +80,38 @@ namespace DraughtsGame.Tests
             return 8;
         }
 
-        public CheeseboardField GetFieldState(CheesboardRow row, CheesboardColumn column)
+        public CheesboardField GetFieldState(CheesboardRow row, CheesboardColumn column)
         {
             throw new NotImplementedException();
         }
 
-        public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheeseboardField fieldState)
+        public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
         {
             CountFields(fieldState);
             SetA1Field(row, column, fieldState);
             SetH8Field(row, column, fieldState);
         }
 
-        private void SetH8Field(CheesboardRow row, CheesboardColumn column, CheeseboardField fieldState)
+        private void SetH8Field(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
         {
             if (CheesboardRow.Eight == row && CheesboardColumn.H == column)
                 H8field = fieldState;
         }
 
-        private void SetA1Field(CheesboardRow row, CheesboardColumn column, CheeseboardField fieldState)
+        private void SetA1Field(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
         {
             if (CheesboardRow.One == row && CheesboardColumn.A == column)
                 A1field = fieldState;
         }
 
-        private void CountFields(CheeseboardField fieldState)
+        private void CountFields(CheesboardField fieldState)
         {
             switch (fieldState)
             {
-                case CheeseboardField.EmptyBlack:
+                case CheesboardField.EmptyBlack:
                     blackFieldsCount++;
                     break;
-                case CheeseboardField.EmptyWhite:
+                case CheesboardField.EmptyWhite:
                     whiteFieldsCount++;
                     break;
                 default:

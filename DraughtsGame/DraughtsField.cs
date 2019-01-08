@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public enum CheeseboardField { NotDefined, EmptyWhite, EmptyBlack, WhitePawn, RedPawn }
+    public enum CheesboardField { NotDefined, EmptyWhite, EmptyBlack, WhitePawn, RedPawn }
 }

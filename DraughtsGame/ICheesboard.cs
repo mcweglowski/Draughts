@@ -8,8 +8,8 @@ namespace DraughtsGame
 {
     public interface ICheesboard
     {
-        CheeseboardField GetFieldState(CheesboardRow row, CheesboardColumn column);
-        void SetFieldState(CheesboardRow row, CheesboardColumn column, CheeseboardField fieldState);
+        CheesboardField GetFieldState(CheesboardRow row, CheesboardColumn column);
+        void SetFieldState(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState);
         int GetCheesboardWidth();
         int GetCheesboardHeight();
     }
