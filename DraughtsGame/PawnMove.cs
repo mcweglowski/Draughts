@@ -8,5 +8,15 @@ namespace DraughtsGame
 {
     public class PawnMove
     {
+        ICheesboard cheesboard;
+        public PawnMove(ICheesboard cheesboard)
+        {
+            this.cheesboard = cheesboard;
+        }
+
+        public void Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+        {
+
+        }
     }
 }
