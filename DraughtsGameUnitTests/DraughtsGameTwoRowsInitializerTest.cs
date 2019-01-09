@@ -70,18 +70,51 @@ namespace DraughtsGameUnitTests
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.WhitePawn, cheesboard.B2, "B2 field pawn should be White.");
+            Assert.AreEqual(CheesboardField.WhitePawn, cheesboard.B2, "B2 field pawn should be White Pawn.");
         }
 
         [TestMethod()]
-        public void TestIfTwoRowsGameInitializedPlacedRedPawnOnH8()
+        public void TestIfTwoRowsGameInitializedPlacedNotDefinedOnA8()
         {
             CheesboardStub cheesboard = new CheesboardStub();
 
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.RedPawn, cheesboard.H8, "H8 field pawn should be Red.");
+            Assert.AreEqual(CheesboardField.NotDefined, cheesboard.A8, "A8 field pawn should be NotDefined.");
+        }
+
+        [TestMethod()]
+        public void TestIfTwoRowsGameInitializedPlacedNotDefinedOnB7()
+        {
+            CheesboardStub cheesboard = new CheesboardStub();
+
+            DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
+            draughtsGameTwoRowsInitializer.InitializeNewGame();
+
+            Assert.AreEqual(CheesboardField.NotDefined, cheesboard.B7, "B7 field pawn should be NotDefined.");
+        }
+
+        [TestMethod()]
+        public void TestIfTwoRowsGameInitializedPlacedRedPawnOnA7()
+        {
+            CheesboardStub cheesboard = new CheesboardStub();
+
+            DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
+            draughtsGameTwoRowsInitializer.InitializeNewGame();
+
+            Assert.AreEqual(CheesboardField.RedPawn, cheesboard.A7, "A7 field pawn should be Red Pawn.");
+        }
+
+        [TestMethod()]
+        public void TestIfTwoRowsGameInitializedPlacedRedPawnOnB8()
+        {
+            CheesboardStub cheesboard = new CheesboardStub();
+
+            DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
+            draughtsGameTwoRowsInitializer.InitializeNewGame();
+
+            Assert.AreEqual(CheesboardField.RedPawn, cheesboard.B8, "B8 field pawn should be Red Pawn.");
         }
     }
 
@@ -94,7 +127,10 @@ namespace DraughtsGameUnitTests
         public CheesboardField A2;
         public CheesboardField B1;
         public CheesboardField B2;
-        public CheesboardField H8;
+        public CheesboardField A8;
+        public CheesboardField B8;
+        public CheesboardField A7;
+        public CheesboardField B7;
 
         public int GetCheesboardHeight()
         {
@@ -142,9 +178,24 @@ namespace DraughtsGameUnitTests
                 B2 = fieldState;
             }
 
-            if (CheesboardRow.Eight == row && CheesboardColumn.H == column)
+            if (CheesboardRow.Eight == row && CheesboardColumn.A == column)
             {
-                H8 = fieldState;
+                A8 = fieldState;
+            }
+
+            if (CheesboardRow.Eight == row && CheesboardColumn.B == column)
+            {
+                B8 = fieldState;
+            }
+
+            if (CheesboardRow.Seven == row && CheesboardColumn.A == column)
+            {
+                A7 = fieldState;
+            }
+
+            if (CheesboardRow.Seven == row && CheesboardColumn.B == column)
+            {
+                B7 = fieldState;
             }
         }
     }

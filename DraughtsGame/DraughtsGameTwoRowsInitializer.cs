@@ -9,7 +9,6 @@ namespace DraughtsGame
     public class DraughtsGameTwoRowsInitializer
     {
         private ICheesboard cheesboard;
-        private const int RowsCount = 2;
 
         public DraughtsGameTwoRowsInitializer(ICheesboard cheesboard)
         {
@@ -24,11 +23,18 @@ namespace DraughtsGame
 
         private void SetupRedPawns()
         {
+            for (CheesboardRow Row = CheesboardRow.Seven; Row <= CheesboardRow.Eight; Row++ )
+            {
+                for (CheesboardColumn Column = GetFirstBlackFieldForRow(Row); (int)Column < cheesboard.GetCheesboardWidth(); Column = Column + 2)
+                {
+                    cheesboard.SetFieldState(Row, Column, CheesboardField.RedPawn);
+                }
+            }
         }
 
         private void SetupWhitePawns()
         {
-            for (CheesboardRow Row = CheesboardRow.One; (int)Row < RowsCount; Row++)
+            for (CheesboardRow Row = CheesboardRow.One; Row < CheesboardRow.Three; Row++)
             {
                 for (CheesboardColumn Column = GetFirstBlackFieldForRow(Row); (int)Column < cheesboard.GetCheesboardWidth(); Column = Column + 2)
                 {
