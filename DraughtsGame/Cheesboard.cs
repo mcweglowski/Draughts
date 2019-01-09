@@ -23,14 +23,14 @@ namespace DraughtsGame
             return cheesboard.GetLength(WidthDimension);
         }
 
-        public CheesboardField GetFieldState(CheesboardRow row, CheesboardColumn column)
+        public CheesboardField GetFieldState(CheesboardFieldCoordinates fieldCoordinates)
         {
-            return cheesboard[(int)row, (int)column];
+            return cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column];
         }
 
-        public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
+        public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
-            cheesboard[(int)row, (int)column] = fieldState;
+            cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column] = fieldState;
         }
     }
 }

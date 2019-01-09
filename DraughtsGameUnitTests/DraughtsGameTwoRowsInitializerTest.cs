@@ -142,12 +142,12 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             return 8;
         }
 
-        public CheesboardField GetFieldState(CheesboardRow row, CheesboardColumn column)
+        public CheesboardField GetFieldState(CheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
+        public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
             if (CheesboardField.RedPawn == fieldState)
             {
@@ -158,42 +158,42 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
                 WhitePawnsCount++;
             }
 
-            if (CheesboardRow.One == row && CheesboardColumn.A == column)
+            if (CheesboardRow.One == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
                 A1 = fieldState;
             }
 
-            if (CheesboardRow.One == row && CheesboardColumn.B == column)
+            if (CheesboardRow.One == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
                 B1 = fieldState;
             }
 
-            if (CheesboardRow.Two == row && CheesboardColumn.A == column)
+            if (CheesboardRow.Two == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
                 A2 = fieldState;
             }
 
-            if (CheesboardRow.Two == row && CheesboardColumn.B == column)
+            if (CheesboardRow.Two == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
                 B2 = fieldState;
             }
 
-            if (CheesboardRow.Eight == row && CheesboardColumn.A == column)
+            if (CheesboardRow.Eight == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
                 A8 = fieldState;
             }
 
-            if (CheesboardRow.Eight == row && CheesboardColumn.B == column)
+            if (CheesboardRow.Eight == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
                 B8 = fieldState;
             }
 
-            if (CheesboardRow.Seven == row && CheesboardColumn.A == column)
+            if (CheesboardRow.Seven == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
                 A7 = fieldState;
             }
 
-            if (CheesboardRow.Seven == row && CheesboardColumn.B == column)
+            if (CheesboardRow.Seven == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
                 B7 = fieldState;
             }

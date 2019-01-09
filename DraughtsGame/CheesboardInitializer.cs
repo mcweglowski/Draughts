@@ -17,21 +17,22 @@ namespace DraughtsGame
 
         public void InitNewCheesboard()
         {
+            CheesboardFieldCoordinates fieldCoordinates = new CheesboardFieldCoordinates();
             CheesboardField lastFieldStatus = CheesboardField.EmptyBlack;
-            for (CheesboardRow Row = CheesboardRow.One; (int)Row < cheesboard.GetCheesboardHeight(); Row++)
+            for (fieldCoordinates.Row = CheesboardRow.One; (int)fieldCoordinates.Row < cheesboard.GetCheesboardHeight(); fieldCoordinates.Row++)
             {
                 lastFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
-                for (CheesboardColumn Column = CheesboardColumn.A; (int)Column < cheesboard.GetCheesboardWidth(); Column++)
+                for (fieldCoordinates.Column = CheesboardColumn.A; (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column++)
                 {
                     CheesboardField newFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
-                    lastFieldStatus = SetNewFieldStaus(Row, Column, newFieldStatus);
+                    lastFieldStatus = SetNewFieldStaus(fieldCoordinates, newFieldStatus);
                 }
             }
         }
 
-        private CheesboardField SetNewFieldStaus(CheesboardRow Row, CheesboardColumn Column, CheesboardField fieldState)
+        private CheesboardField SetNewFieldStaus(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
-            cheesboard.SetFieldState(Row, Column, fieldState);
+            cheesboard.SetFieldState(fieldCoordinates, fieldState);
             return fieldState;
         }
 

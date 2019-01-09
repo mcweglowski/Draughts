@@ -60,12 +60,12 @@ namespace DraughtsGame.Tests_MovePawn
             throw new System.NotImplementedException();
         }
 
-        public CheesboardField GetFieldState(CheesboardRow row, CheesboardColumn column)
+        public CheesboardField GetFieldState(CheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
 
-        public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
+        public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
             throw new System.NotImplementedException();
         }

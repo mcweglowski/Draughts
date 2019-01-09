@@ -23,22 +23,24 @@ namespace DraughtsGame
 
         private void SetupRedPawns()
         {
-            for (CheesboardRow Row = CheesboardRow.Seven; Row <= CheesboardRow.Eight; Row++ )
+            CheesboardFieldCoordinates fieldCoordinates = new CheesboardFieldCoordinates();
+            for (fieldCoordinates.Row = CheesboardRow.Seven; fieldCoordinates.Row <= CheesboardRow.Eight; fieldCoordinates.Row++ )
             {
-                for (CheesboardColumn Column = GetFirstBlackFieldForRow(Row); (int)Column < cheesboard.GetCheesboardWidth(); Column = Column + 2)
+                for (fieldCoordinates.Column = GetFirstBlackFieldForRow(fieldCoordinates.Row); (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column = fieldCoordinates.Column + 2)
                 {
-                    cheesboard.SetFieldState(Row, Column, CheesboardField.RedPawn);
+                    cheesboard.SetFieldState(fieldCoordinates, CheesboardField.RedPawn);
                 }
             }
         }
 
         private void SetupWhitePawns()
         {
-            for (CheesboardRow Row = CheesboardRow.One; Row < CheesboardRow.Three; Row++)
+            CheesboardFieldCoordinates fieldCoordinates = new CheesboardFieldCoordinates();
+            for (fieldCoordinates.Row = CheesboardRow.One; fieldCoordinates.Row < CheesboardRow.Three; fieldCoordinates.Row++)
             {
-                for (CheesboardColumn Column = GetFirstBlackFieldForRow(Row); (int)Column < cheesboard.GetCheesboardWidth(); Column = Column + 2)
+                for (fieldCoordinates.Column = GetFirstBlackFieldForRow(fieldCoordinates.Row); (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column = fieldCoordinates.Column + 2)
                 {
-                    cheesboard.SetFieldState(Row, Column, CheesboardField.WhitePawn);
+                    cheesboard.SetFieldState(fieldCoordinates, CheesboardField.WhitePawn);
                 }
             }
         }

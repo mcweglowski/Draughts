@@ -34,7 +34,7 @@ namespace DraughtsGame.Tests_Cheesboard
             CheesboardField expectedCheeseboardField = CheesboardField.NotDefined;
 
             Cheesboard cheesboard = new Cheesboard();
-            CheesboardField actualCheeseboardField = cheesboard.GetFieldState(CheesboardRow.One, CheesboardColumn.A);
+            CheesboardField actualCheeseboardField = cheesboard.GetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.One, Column = CheesboardColumn.A });
 
             Assert.AreEqual(expectedCheeseboardField, actualCheeseboardField, "For not initialized cheesebord, first field should be undefined.");
         }
@@ -45,7 +45,7 @@ namespace DraughtsGame.Tests_Cheesboard
             CheesboardField expectedCheeseboardField = CheesboardField.NotDefined;
 
             Cheesboard cheesboard = new Cheesboard();
-            CheesboardField actualCheeseboardField = cheesboard.GetFieldState(CheesboardRow.Eight, CheesboardColumn.H);
+            CheesboardField actualCheeseboardField = cheesboard.GetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.Eight, Column = CheesboardColumn.H });
 
             Assert.AreEqual(expectedCheeseboardField, actualCheeseboardField, "For not initialized cheesebord, last field should be undefined.");
         }
@@ -56,9 +56,9 @@ namespace DraughtsGame.Tests_Cheesboard
             CheesboardField expectedFieldState = CheesboardField.EmptyBlack;            
 
             Cheesboard cheesboard = new Cheesboard();
-            cheesboard.SetFieldState(CheesboardRow.Eight, CheesboardColumn.H, CheesboardField.EmptyBlack);
+            cheesboard.SetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.Eight, Column = CheesboardColumn.H }, CheesboardField.EmptyBlack);
 
-            CheesboardField actualFieldState = cheesboard.GetFieldState(CheesboardRow.Eight, CheesboardColumn.H);
+            CheesboardField actualFieldState = cheesboard.GetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.Eight, Column = CheesboardColumn.H });
 
             Assert.AreEqual(expectedFieldState, actualFieldState, "H8 Field should be EmptyBlack.");
         }

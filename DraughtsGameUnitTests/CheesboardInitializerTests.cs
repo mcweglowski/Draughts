@@ -76,27 +76,27 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             return 8;
         }
 
-        public CheesboardField GetFieldState(CheesboardRow row, CheesboardColumn column)
+        public CheesboardField GetFieldState(CheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }
 
-        public void SetFieldState(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
+        public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
             CountFields(fieldState);
-            SetA1Field(row, column, fieldState);
-            SetH8Field(row, column, fieldState);
+            SetA1Field(fieldCoordinates, fieldState);
+            SetH8Field(fieldCoordinates, fieldState);
         }
 
-        private void SetH8Field(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
+        private void SetH8Field(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
-            if (CheesboardRow.Eight == row && CheesboardColumn.H == column)
+            if (CheesboardRow.Eight == fieldCoordinates.Row && CheesboardColumn.H == fieldCoordinates.Column)
                 H8field = fieldState;
         }
 
-        private void SetA1Field(CheesboardRow row, CheesboardColumn column, CheesboardField fieldState)
+        private void SetA1Field(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
-            if (CheesboardRow.One == row && CheesboardColumn.A == column)
+            if (CheesboardRow.One == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
                 A1field = fieldState;
         }
 

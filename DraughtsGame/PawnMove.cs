@@ -16,7 +16,6 @@ namespace DraughtsGame
 
         public void Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
         {
-
         }
     }
 }
