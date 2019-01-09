@@ -2,7 +2,7 @@
 using DraughtsGame;
 using System;
 
-namespace DraughtsGameUnitTests_CheesboardInitializer
+namespace DraughtsGame.Tests_CheesboardInitializer
 {
     [TestClass()]
     public class CheesboardInitializerTests

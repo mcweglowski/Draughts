@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Cheesboard.cs" />
     <Compile Include="CheesboardColumns.cs" />
+    <Compile Include="CheesboardFieldCoordinates.cs" />
     <Compile Include="CheeseboardRow.cs" />
     <Compile Include="DraughtsField.cs" />
     <Compile Include="CheesboardInitializer.cs" />

@@ -1,7 +1,7 @@
 ﻿using DraughtsGame;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DraughtsGameUnitTests_DraughtsGameTwoRowsInitializer
+namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
 {
     [TestClass()]
     public class DraughtsGameTwoRowsInitializerTest

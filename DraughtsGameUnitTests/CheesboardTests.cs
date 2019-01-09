@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DraughtsGame;
 
-namespace DraughtsGameUnitTests_Cheesboard
+namespace DraughtsGame.Tests_Cheesboard
 {
     [TestClass()]
     public class CheesboardTests
