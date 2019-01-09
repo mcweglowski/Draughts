@@ -62,12 +62,21 @@ namespace DraughtsGame.Tests_MovePawn
 
         public CheesboardField GetFieldState(CheesboardFieldCoordinates fieldCoordinates)
         {
-            throw new System.NotImplementedException();
+            return A1;
         }
 
         public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
-            throw new System.NotImplementedException();
+            if (CheesboardColumn.A == fieldCoordinates.Column && CheesboardRow.One == fieldCoordinates.Row)
+            {
+                A1 = fieldState;
+            }
+
+            if (CheesboardColumn.B == fieldCoordinates.Column && CheesboardRow.Two == fieldCoordinates.Row)
+            {
+                B2 = fieldState;
+            }
+
         }
     }
 }
