@@ -49,10 +49,12 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheesboardFieldCoordinatesTests.cs" />
     <Compile Include="CheesboardInitializerTests.cs" />
     <Compile Include="CheesboardTests.cs" />
     <Compile Include="DraughtsGameTwoRowsInitializerTest.cs" />
     <Compile Include="PawnMoveTests.cs" />
+    <Compile Include="DraughtsPawnMoveValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
