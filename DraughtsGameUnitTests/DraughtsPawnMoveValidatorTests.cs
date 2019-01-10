@@ -105,7 +105,7 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         }
 
         [TestMethod()]
-        public void IsMoveAvaliableTest_WhitePawnCantMoveB2_C2()
+        public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_C2()
         {
             cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
 
@@ -119,7 +119,7 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         }
 
         [TestMethod()]
-        public void IsMoveAvaliableTest_WhitePawnCantMoveB2_A2()
+        public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_A2()
         {
             cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
 
