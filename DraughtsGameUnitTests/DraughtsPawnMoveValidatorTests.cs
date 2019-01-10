@@ -22,11 +22,11 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
 
         [TestMethod()]
         public void IsMoveAvaliableTest_WhitePawnCanMoveB2_C1()
-        {            
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
-
+        {
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
             CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
             bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
@@ -37,10 +37,10 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         [TestMethod()]
         public void IsMoveAvaliableTest_WhitePawnCanMoveB2_C3()
         {
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
-
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
             CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.C);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
             bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
@@ -51,10 +51,10 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         [TestMethod()]
         public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_A1()
         {
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
-
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
             CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.A);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
             bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
@@ -65,11 +65,11 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         [TestMethod()]
         public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_A3()
         {
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
-
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
             CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.A);
 
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
+
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
             bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
@@ -77,13 +77,13 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         }
 
         [TestMethod()]
-        public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_B1()
+        public void IsMoveAvaliableTest_PawnCanNotMoveB2_B1()
         {
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
-
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
             CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.B);
 
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
+
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
             bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
@@ -91,13 +91,13 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         }
 
         [TestMethod()]
-        public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_B3()
+        public void IsMoveAvaliableTest_PawnCanNotMoveB2_B3()
         {
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
-
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
             CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.B);
 
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
+
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
             bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
@@ -105,13 +105,13 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         }
 
         [TestMethod()]
-        public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_C2()
+        public void IsMoveAvaliableTest_PawnCanNotMoveB2_C2()
         {
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
-
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
             CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.C);
 
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
+
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
             bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
@@ -119,7 +119,7 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         }
 
         [TestMethod()]
-        public void IsMoveAvaliableTest_WhitePawnCanNotMoveB2_A2()
+        public void IsMoveAvaliableTest_PawnCanNotMoveB2_A2()
         {
             cheesboard.SetFieldState(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), CheesboardField.WhitePawn);
 
@@ -131,5 +131,64 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
 
             Assert.IsFalse(actualIsMoveAvaliable, string.Format("White Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
+
+        [TestMethod()]
+        public void IsMoveAvaliableTest_RedPawnCanMoveG7_F6()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Seven, CheesboardColumn.G);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Six, CheesboardColumn.F);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.RedPawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsTrue(actualIsMoveAvaliable, string.Format("White Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
+        }
+
+        [TestMethod()]
+        public void IsMoveAvaliableTest_RedPawnCanMoveG7_F8()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Seven, CheesboardColumn.G);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.F);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.RedPawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsTrue(actualIsMoveAvaliable, string.Format("White Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
+        }
+
+        [TestMethod()]
+        public void IsMoveAvaliableTest_RedPawnCanNotMoveG7_H6()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Seven, CheesboardColumn.G);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Six, CheesboardColumn.H);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.RedPawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsFalse(actualIsMoveAvaliable, string.Format("White Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+        }
+
+        [TestMethod()]
+        public void IsMoveAvaliableTest_RedPawnCanNotMoveG7_H8()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Seven, CheesboardColumn.G);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.H);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.RedPawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsFalse(actualIsMoveAvaliable, string.Format("White Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+        }
+
+
+
     }
 }
