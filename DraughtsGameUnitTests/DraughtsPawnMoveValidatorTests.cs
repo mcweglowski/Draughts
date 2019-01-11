@@ -188,6 +188,28 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             Assert.IsFalse(actualIsMoveAvaliable, string.Format("Red Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
+        [TestMethod()]
+        public void IsMoveAvaliableTest_ThrowErrorWhenSourceFieldNotRedWhitePawn()
+        {
+            bool ExceptionRaised = false;
+            try
+            {
+                CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Seven, CheesboardColumn.G);
+                CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.H);
+
+                cheesboard.SetFieldState(sourceField, CheesboardField.EmptyWhite);
+
+                DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+                pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            }
+            catch
+            {
+                ExceptionRaised = true;
+            }
+
+            Assert.IsTrue(ExceptionRaised, "When try to move anything different than Pawn, error should be thrown.");
+        }
+
 
 
     }
