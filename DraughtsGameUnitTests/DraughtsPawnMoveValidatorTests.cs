@@ -210,6 +210,21 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             Assert.IsTrue(ExceptionRaised, "When try to move anything different than Pawn, error should be thrown.");
         }
 
+        [TestMethod()]
+        public void IsMoveAvaliableTest_PawnCantMoveIfFieldOccupied()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.B);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.C);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
+            cheesboard.SetFieldState(destinationField, CheesboardField.WhitePawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsFalse(actualIsMoveAvaliable, "Move should not be possible, destination field is occupied.");
+        }
+
 
 
     }
