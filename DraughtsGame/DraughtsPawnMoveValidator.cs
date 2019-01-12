@@ -22,8 +22,20 @@ namespace DraughtsGame
 
         public bool IsMoveAvaliable(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
         {
+            CheesboardField destinationFieldState = cheesboard.GetFieldState(destinationField);
+
+            if (true == IsDestinationFieldOccupied(destinationFieldState))
+            {
+                return false;
+            }
+
             IList<CheesboardFieldCoordinates> avaliableDestinationFields = GetAvaliableDestinationFields(sourceField);
             return IsDestinationFieldInAvaliableDestinationFieldsForPawn(destinationField, avaliableDestinationFields);
+        }
+
+        private bool IsDestinationFieldOccupied(CheesboardField destinationFieldState)
+        {
+            return destinationFieldState == CheesboardField.RedPawn || destinationFieldState == CheesboardField.WhitePawn;
         }
 
         private static bool IsDestinationFieldInAvaliableDestinationFieldsForPawn(CheesboardFieldCoordinates destinationField, IList<CheesboardFieldCoordinates> avaliableDestinationFields)
