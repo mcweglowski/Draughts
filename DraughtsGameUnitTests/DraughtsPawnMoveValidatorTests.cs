@@ -225,6 +225,35 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             Assert.IsFalse(actualIsMoveAvaliable, "Move should not be possible, destination field is occupied.");
         }
 
+        [TestMethod()]
+        public void IsMoveAvaliableTest_PawnCantMoveTwoFieldsForward()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.B);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Six, CheesboardColumn.D);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsFalse(actualIsMoveAvaliable, "Pawn should not be able to move two fields forward if middle field is empty.");
+        }
+
+        [TestMethod()]
+        public void IsMoveAvaliableTest_PawnCanMoveTwoFieldsForwardWhenMiddleFieldOccupiedByOponent()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.B);
+            CheesboardFieldCoordinates middleField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.C);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Six, CheesboardColumn.D);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.WhitePawn);
+            cheesboard.SetFieldState(middleField, CheesboardField.RedPawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsTrue(actualIsMoveAvaliable, "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
+        }
 
 
     }
