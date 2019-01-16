@@ -240,7 +240,7 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         }
 
         [TestMethod()]
-        public void IsMoveAvaliableTest_PawnCanMoveTwoFieldsForwardWhenMiddleFieldOccupiedByOponent()
+        public void IsMoveAvaliableTest_WhitePawnCanMoveTwoFieldsForwardWhenMiddleFieldOccupiedByOponent()
         {
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.B);
             CheesboardFieldCoordinates middleField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.C);
@@ -255,6 +255,21 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             Assert.IsTrue(actualIsMoveAvaliable, "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
         }
 
+        [TestMethod()]
+        public void IsMoveAvaliableTest_RedPawnCanMoveTwoFieldsForwardWhenMiddleFieldOccupiedByOponent()
+        {
+            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Six, CheesboardColumn.D);
+            CheesboardFieldCoordinates middleField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.C);
+            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.B);
+
+            cheesboard.SetFieldState(sourceField, CheesboardField.RedPawn);
+            cheesboard.SetFieldState(middleField, CheesboardField.WhitePawn);
+
+            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            Assert.IsTrue(actualIsMoveAvaliable, "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
+        }
 
     }
 }
