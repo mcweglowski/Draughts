@@ -22,20 +22,13 @@ namespace DraughtsGame
 
         public bool IsMoveAvaliable(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
         {
-            CheesboardField destinationFieldState = cheesboard.GetFieldState(destinationField);
-
-            if (true == IsDestinationFieldOccupied(destinationFieldState))
+            if (true == IsFieldEmpty(destinationField))
             {
                 return false;
             }
 
             IList<CheesboardFieldCoordinates> avaliableDestinationFields = GetAvaliableDestinationFields(sourceField);
             return IsDestinationFieldInAvaliableDestinationFieldsForPawn(destinationField, avaliableDestinationFields);
-        }
-
-        private bool IsDestinationFieldOccupied(CheesboardField destinationFieldState)
-        {
-            return destinationFieldState == CheesboardField.RedPawn || destinationFieldState == CheesboardField.WhitePawn;
         }
 
         private static bool IsDestinationFieldInAvaliableDestinationFieldsForPawn(CheesboardFieldCoordinates destinationField, IList<CheesboardFieldCoordinates> avaliableDestinationFields)
@@ -46,26 +39,21 @@ namespace DraughtsGame
         private IList<CheesboardFieldCoordinates> GetAvaliableDestinationFields(CheesboardFieldCoordinates sourceField)
         {
             IList<CheesboardFieldCoordinates> avaliableDestinationFields = new List<CheesboardFieldCoordinates>();
-            CheesboardField sourceFieldState = cheesboard.GetFieldState(sourceField);
-            CheesboardRow avaliableRow = sourceField.Row;
+            IPawn pawn = cheesboard.GetPawn(sourceField);
+            IList<MoveCoordinate> moveCoordinates = pawn.GetMoveCoordinates();
 
-            if (CheesboardField.WhitePawn == sourceFieldState)
+            foreach (MoveCoordinate moveCoordinate in moveCoordinates)
             {
-                avaliableRow = sourceField.Row + 1;
+                CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates(sourceField.Row + moveCoordinate.Row, sourceField.Column + moveCoordinate.Column);
+                avaliableDestinationFields.Add(cheesboardFieldCoordinates);
             }
-            else if (CheesboardField.RedPawn == sourceFieldState)
-            {
-                avaliableRow = sourceField.Row - 1;
-            }
-            else
-            {
-                throw new Exception(string.Format("DraughtsPawnMoveValidator.GetAvaliableDestinationFields unsupported move try. Source field: {0}, field state: {1}", sourceField.ToString(), sourceFieldState));
-            }
-
-            avaliableDestinationFields.Add(new CheesboardFieldCoordinates(avaliableRow, sourceField.Column + 1));
-            avaliableDestinationFields.Add(new CheesboardFieldCoordinates(avaliableRow, sourceField.Column - 1));
 
             return avaliableDestinationFields;
+        }
+
+        private bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            return cheesboard.IsFieldEmpty(fieldCoordinates);
         }
     }
 }

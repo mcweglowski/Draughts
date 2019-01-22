@@ -31,36 +31,38 @@ namespace DraughtsGame.Tests_Cheesboard
         [TestMethod()]
         public void GetFieldStateForA1WhenNewCheesboardShouldBeUndefined()
         {
-            CheesboardField expectedCheeseboardField = CheesboardField.NotDefined;
+            FieldColor expectedFieldColor = FieldColor.NotDefined;
+            CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.A);
 
             Cheesboard cheesboard = new Cheesboard();
-            CheesboardField actualCheeseboardField = cheesboard.GetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.One, Column = CheesboardColumn.A });
+            FieldColor actualFieldColor = cheesboard.GetFieldColor(cheesboardFieldCoordinates);
 
-            Assert.AreEqual(expectedCheeseboardField, actualCheeseboardField, "For not initialized cheesebord, first field should be undefined.");
+            Assert.AreEqual(expectedFieldColor, actualFieldColor, "For not initialized cheesebord, first field should be undefined.");
         }
 
         [TestMethod()]
         public void GetFieldStateForH8WhenNewCheesboardShouldBeUndefined()
         {
-            CheesboardField expectedCheeseboardField = CheesboardField.NotDefined;
+            FieldColor expectedFieldColor = FieldColor.NotDefined;
+            CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.H);
 
             Cheesboard cheesboard = new Cheesboard();
-            CheesboardField actualCheeseboardField = cheesboard.GetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.Eight, Column = CheesboardColumn.H });
+            FieldColor actualFieldColor = cheesboard.GetFieldColor(cheesboardFieldCoordinates);
 
-            Assert.AreEqual(expectedCheeseboardField, actualCheeseboardField, "For not initialized cheesebord, last field should be undefined.");
+            Assert.AreEqual(expectedFieldColor, actualFieldColor, "For not initialized cheesebord, last field should be undefined.");
         }
 
         [TestMethod()]
         public void SetFieldStateH8ChangesStatusFromNotDefinedToEmptyBlack()
         {
-            CheesboardField expectedFieldState = CheesboardField.EmptyBlack;            
+            FieldColor expectedFieldColor = FieldColor.Black;
+            CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates() { Row = CheesboardRow.Eight, Column = CheesboardColumn.H };
 
             Cheesboard cheesboard = new Cheesboard();
-            cheesboard.SetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.Eight, Column = CheesboardColumn.H }, CheesboardField.EmptyBlack);
+            cheesboard.SetFieldColor(cheesboardFieldCoordinates, FieldColor.Black);
+            FieldColor actualFieldColor = cheesboard.GetFieldColor(cheesboardFieldCoordinates);
 
-            CheesboardField actualFieldState = cheesboard.GetFieldState(new CheesboardFieldCoordinates() { Row = CheesboardRow.Eight, Column = CheesboardColumn.H });
-
-            Assert.AreEqual(expectedFieldState, actualFieldState, "H8 Field should be EmptyBlack.");
+            Assert.AreEqual(expectedFieldColor, actualFieldColor, "H8 Field should be Black.");
         }
     }
 }

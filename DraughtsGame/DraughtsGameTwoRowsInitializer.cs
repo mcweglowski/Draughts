@@ -23,26 +23,52 @@ namespace DraughtsGame
 
         private void SetupRedPawns()
         {
+            PlayerColor playerColor = PlayerColor.Red;
+
+            IList<MoveCoordinate> newPawnMoveCoordinates = GetMoveCoordinates(playerColor);
+
             CheesboardFieldCoordinates fieldCoordinates = new CheesboardFieldCoordinates();
             for (fieldCoordinates.Row = CheesboardRow.Seven; fieldCoordinates.Row <= CheesboardRow.Eight; fieldCoordinates.Row++ )
             {
                 for (fieldCoordinates.Column = GetFirstBlackFieldForRow(fieldCoordinates.Row); (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column = fieldCoordinates.Column + 2)
                 {
-                    cheesboard.SetFieldState(fieldCoordinates, CheesboardField.RedPawn);
+                    cheesboard.SetPawn(fieldCoordinates, new Pawn(playerColor, newPawnMoveCoordinates));
                 }
             }
         }
 
         private void SetupWhitePawns()
         {
+            PlayerColor playerColor = PlayerColor.White;
+
+            IList<MoveCoordinate> newPawnMoveCoordinates = GetMoveCoordinates(playerColor);
             CheesboardFieldCoordinates fieldCoordinates = new CheesboardFieldCoordinates();
+
             for (fieldCoordinates.Row = CheesboardRow.One; fieldCoordinates.Row < CheesboardRow.Three; fieldCoordinates.Row++)
             {
                 for (fieldCoordinates.Column = GetFirstBlackFieldForRow(fieldCoordinates.Row); (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column = fieldCoordinates.Column + 2)
                 {
-                    cheesboard.SetFieldState(fieldCoordinates, CheesboardField.WhitePawn);
+                    cheesboard.SetPawn(fieldCoordinates, new Pawn(playerColor, newPawnMoveCoordinates));
                 }
             }
+        }
+
+
+        private IList<MoveCoordinate> GetMoveCoordinates(PlayerColor playerColor)
+        {
+            IList<MoveCoordinate> moveCoordinates = new List<MoveCoordinate>();
+            int direction = GetRowDirection(playerColor);
+            moveCoordinates.Add(new MoveCoordinate(direction, +1));
+            moveCoordinates.Add(new MoveCoordinate(direction, -1));
+
+            return moveCoordinates; ;
+        }
+
+        private int GetRowDirection(PlayerColor playerColor)
+        {
+            if (PlayerColor.Red == playerColor)
+                return -1;
+            return 1;
         }
 
         private CheesboardColumn GetFirstBlackFieldForRow(CheesboardRow Row)

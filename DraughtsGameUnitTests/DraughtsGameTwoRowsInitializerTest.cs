@@ -36,18 +36,24 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.WhitePawn, cheesboard.A1, "A1 field pawn should be White.");
+            IPawn actualPawn = cheesboard.A1;
+            PlayerColor actualPlayerColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.White, actualPlayerColor, "A1 field pawn should be White.");
         }
 
         [TestMethod()]
-        public void TestIfTwoRowsGameInitializedPlacedWhitePawnOnA2()
+        public void TestIfTwoRowsGameInitializedA2ShouldBeNotDefined()
         {
             CheesboardStub cheesboard = new CheesboardStub();
 
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.NotDefined, cheesboard.A2, "A2 field pawn should be NotDefined.");
+            IPawn actualPawn = cheesboard.A2;
+            PlayerColor actualColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "A2 field pawn should be NotDefined.");
         }
 
         [TestMethod()]
@@ -58,7 +64,10 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.NotDefined, cheesboard.B1, "B1 field pawn should be NotDefined.");
+            IPawn actualPawn = cheesboard.B1;
+            PlayerColor actualColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "B1 field pawn should be NotDefined.");
         }
 
 
@@ -70,7 +79,10 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.WhitePawn, cheesboard.B2, "B2 field pawn should be White Pawn.");
+            IPawn actualPawn = cheesboard.B2;
+            PlayerColor actualColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.White, actualColor, "B2 field pawn should be White Pawn.");
         }
 
         [TestMethod()]
@@ -81,7 +93,10 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.NotDefined, cheesboard.A8, "A8 field pawn should be NotDefined.");
+            IPawn actualPawn = cheesboard.A8;
+            PlayerColor actualColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "A8 field pawn should be NotDefined.");
         }
 
         [TestMethod()]
@@ -92,7 +107,10 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.NotDefined, cheesboard.B7, "B7 field pawn should be NotDefined.");
+            IPawn actualPawn = cheesboard.B7;
+            PlayerColor actualColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "B7 field pawn should be NotDefined.");
         }
 
         [TestMethod()]
@@ -103,7 +121,10 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.RedPawn, cheesboard.A7, "A7 field pawn should be Red Pawn.");
+            IPawn actualPawn = cheesboard.A7;
+            PlayerColor actualColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.Red, actualColor, "A7 field pawn should be Red Pawn.");
         }
 
         [TestMethod()]
@@ -114,7 +135,10 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             DraughtsGameTwoRowsInitializer draughtsGameTwoRowsInitializer = new DraughtsGameTwoRowsInitializer(cheesboard);
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
-            Assert.AreEqual(CheesboardField.RedPawn, cheesboard.B8, "B8 field pawn should be Red Pawn.");
+            IPawn actualPawn = cheesboard.B8;
+            PlayerColor actualColor = actualPawn.GetPlayerColor();
+
+            Assert.AreEqual(PlayerColor.Red, actualColor, "B8 field pawn should be Red Pawn.");
         }
     }
 
@@ -123,14 +147,14 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
         public int WhitePawnsCount = 0;
         public int RedPawnsCount = 0;
 
-        public CheesboardField A1;
-        public CheesboardField A2;
-        public CheesboardField B1;
-        public CheesboardField B2;
-        public CheesboardField A8;
-        public CheesboardField B8;
-        public CheesboardField A7;
-        public CheesboardField B7;
+        public IPawn A1;
+        public IPawn A2;
+        public IPawn B1;
+        public IPawn B2;
+        public IPawn A8;
+        public IPawn B8;
+        public IPawn A7;
+        public IPawn B7;
 
         public int GetCheesboardHeight()
         {
@@ -142,60 +166,89 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             return 8;
         }
 
+        public FieldColor GetFieldColor(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public CheesboardField GetFieldState(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             throw new System.NotImplementedException();
         }
 
         public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
         {
-            if (CheesboardField.RedPawn == fieldState)
+        }
+
+        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        {
+            if (PlayerColor.Red == pawn.GetPlayerColor())
             {
                 RedPawnsCount++;
             }
-            else if (CheesboardField.WhitePawn == fieldState)
+            else if (PlayerColor.White == pawn.GetPlayerColor())
             {
                 WhitePawnsCount++;
             }
 
             if (CheesboardRow.One == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
-                A1 = fieldState;
+                A1 = pawn;
             }
 
             if (CheesboardRow.One == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
-                B1 = fieldState;
+                B1 = pawn;
             }
 
             if (CheesboardRow.Two == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
-                A2 = fieldState;
+                A2 = pawn;
             }
 
             if (CheesboardRow.Two == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
-                B2 = fieldState;
+                B2 = pawn;
             }
 
             if (CheesboardRow.Eight == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
-                A8 = fieldState;
+                A8 = pawn;
             }
 
             if (CheesboardRow.Eight == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
-                B8 = fieldState;
+                B8 = pawn;
             }
 
             if (CheesboardRow.Seven == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
             {
-                A7 = fieldState;
+                A7 = pawn;
             }
 
             if (CheesboardRow.Seven == fieldCoordinates.Row && CheesboardColumn.B == fieldCoordinates.Column)
             {
-                B7 = fieldState;
+                B7 = pawn;
             }
         }
     }

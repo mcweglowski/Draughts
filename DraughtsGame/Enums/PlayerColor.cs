@@ -1,0 +1,1 @@
+﻿public enum PlayerColor { NotDefined, White, Red };

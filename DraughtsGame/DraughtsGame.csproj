@@ -42,15 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cheesboard.cs" />
-    <Compile Include="CheesboardColumns.cs" />
+    <Compile Include="Enums\CheesboardColumns.cs" />
+    <Compile Include="CheesboardField.cs" />
     <Compile Include="CheesboardFieldCoordinates.cs" />
-    <Compile Include="CheeseboardRow.cs" />
-    <Compile Include="DraughtsField.cs" />
+    <Compile Include="Enums\CheeseboardRow.cs" />
     <Compile Include="CheesboardInitializer.cs" />
     <Compile Include="DraughtsGameTwoRowsInitializer.cs" />
-    <Compile Include="ICheesboard.cs" />
+    <Compile Include="Enums\FieldColor.cs" />
+    <Compile Include="Interfaces\ICheesboard.cs" />
     <Compile Include="DraughtsPawnMoveValidator.cs" />
+    <Compile Include="Interfaces\ICheesboardField.cs" />
+    <Compile Include="Interfaces\ICheesboardInitializer.cs" />
+    <Compile Include="Interfaces\IPawn.cs" />
+    <Compile Include="MoveCoordinates.cs" />
+    <Compile Include="Pawn.cs" />
     <Compile Include="PawnMove.cs" />
+    <Compile Include="Enums\PlayerColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

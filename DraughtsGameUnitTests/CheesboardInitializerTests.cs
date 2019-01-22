@@ -44,7 +44,7 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
             draughtsCheesboardInitializer.InitNewCheesboard();
 
-            Assert.AreEqual(CheesboardField.EmptyBlack, cheesboard.A1field, "A1 field should be EmptyBlack.");
+            Assert.AreEqual(FieldColor.Black, cheesboard.A1field, "A1 field should be EmptyBlack.");
         }
 
         [TestMethod]
@@ -54,7 +54,7 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
             draughtsCheesboardInitializer.InitNewCheesboard();
 
-            Assert.AreEqual(CheesboardField.EmptyBlack, cheesboard.H8field, "H8 field should be EmptyBlack.");
+            Assert.AreEqual(FieldColor.Black, cheesboard.H8field, "H8 field should be EmptyBlack.");
         }
     }
 
@@ -63,8 +63,8 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         public int blackFieldsCount = 0;
         public int whiteFieldsCount = 0;
         public int otherFieldsCount = 0;
-        public CheesboardField A1field;
-        public CheesboardField H8field;
+        public FieldColor A1field;
+        public FieldColor H8field;
 
         public int GetCheesboardHeight()
         {
@@ -81,39 +81,64 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             throw new NotImplementedException();
         }
 
-        public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
+        public void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldState)
         {
             CountFields(fieldState);
             SetA1Field(fieldCoordinates, fieldState);
             SetH8Field(fieldCoordinates, fieldState);
         }
 
-        private void SetH8Field(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
+        private void SetH8Field(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             if (CheesboardRow.Eight == fieldCoordinates.Row && CheesboardColumn.H == fieldCoordinates.Column)
-                H8field = fieldState;
+                H8field = fieldColor;
         }
 
-        private void SetA1Field(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
+        private void SetA1Field(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             if (CheesboardRow.One == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
-                A1field = fieldState;
+                A1field = fieldColor;
         }
 
-        private void CountFields(CheesboardField fieldState)
+        private void CountFields(FieldColor fieldColor)
         {
-            switch (fieldState)
+            switch (fieldColor)
             {
-                case CheesboardField.EmptyBlack:
+                case FieldColor.Black:
                     blackFieldsCount++;
                     break;
-                case CheesboardField.EmptyWhite:
+                case FieldColor.White:
                     whiteFieldsCount++;
                     break;
                 default:
                     otherFieldsCount++;
                     break;
             };
+        }
+
+        public FieldColor GetFieldColor(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
         }
     }
 }

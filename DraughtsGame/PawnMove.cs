@@ -16,9 +16,8 @@ namespace DraughtsGame
 
         public void Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
         {
-            CheesboardField destinationFieldState = cheesboard.GetFieldState(sourceField);
-            cheesboard.SetFieldState(destinationField, destinationFieldState);
-            cheesboard.SetFieldState(sourceField, CheesboardField.EmptyBlack);
+            IPawn pawn = cheesboard.PickPawn(sourceField);
+            cheesboard.SetPawn(destinationField, pawn);
         }
     }
 }

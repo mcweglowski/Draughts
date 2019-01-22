@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class CheesboardInitializer
+    public class CheesboardInitializer : ICheesboardInitializer
     {
         private ICheesboard cheesboard;
         private CheesboardInitializer() { }
@@ -15,33 +15,38 @@ namespace DraughtsGame
             this.cheesboard = cheesboard;
         }
 
+        public void SetCheesboard(ICheesboard cheesboard)
+        {
+            this.cheesboard = cheesboard;
+        }
+
         public void InitNewCheesboard()
         {
             CheesboardFieldCoordinates fieldCoordinates = new CheesboardFieldCoordinates();
-            CheesboardField lastFieldStatus = CheesboardField.EmptyBlack;
+            FieldColor lastFieldColor = FieldColor.Black;
             for (fieldCoordinates.Row = CheesboardRow.One; (int)fieldCoordinates.Row < cheesboard.GetCheesboardHeight(); fieldCoordinates.Row++)
             {
-                lastFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
+                lastFieldColor = GetOppositeFieldStatus(lastFieldColor);
                 for (fieldCoordinates.Column = CheesboardColumn.A; (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column++)
                 {
-                    CheesboardField newFieldStatus = GetOppositeFieldStatus(lastFieldStatus);
-                    lastFieldStatus = SetNewFieldStaus(fieldCoordinates, newFieldStatus);
+                    FieldColor newFieldColor = GetOppositeFieldStatus(lastFieldColor);
+                    lastFieldColor = SetNewFieldStaus(fieldCoordinates, newFieldColor);
                 }
             }
         }
 
-        private CheesboardField SetNewFieldStaus(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
+        private FieldColor SetNewFieldStaus(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
-            cheesboard.SetFieldState(fieldCoordinates, fieldState);
-            return fieldState;
+            cheesboard.SetFieldColor(fieldCoordinates, fieldColor);
+            return fieldColor;
         }
 
-        private CheesboardField GetOppositeFieldStatus(CheesboardField previousFieldState)
+        private FieldColor GetOppositeFieldStatus(FieldColor previousFieldColor)
         {
-            if (CheesboardField.EmptyWhite == previousFieldState)
-                return CheesboardField.EmptyBlack;
+            if (FieldColor.White == previousFieldColor)
+                return FieldColor.Black;
 
-            return CheesboardField.EmptyWhite;
+            return FieldColor.White;
         }
     }
 }

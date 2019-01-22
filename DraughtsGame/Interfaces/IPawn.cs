@@ -6,5 +6,9 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public enum CheesboardField { NotDefined, EmptyWhite, EmptyBlack, WhitePawn, RedPawn }
+    public interface IPawn
+    {
+        IList<MoveCoordinate> GetMoveCoordinates();
+        PlayerColor GetPlayerColor();
+    }
 }

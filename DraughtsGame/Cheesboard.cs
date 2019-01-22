@@ -8,10 +8,25 @@ namespace DraughtsGame
 {
     public class Cheesboard : ICheesboard
     {
-
-        private CheesboardField[,] cheesboard = new CheesboardField[Enum.GetNames(typeof(CheesboardColumn)).Length, Enum.GetNames(typeof(CheesboardRow)).Length];
+        private ICheesboardField[,] cheesboard = new ICheesboardField[Enum.GetNames(typeof(CheesboardColumn)).Length, Enum.GetNames(typeof(CheesboardRow)).Length];
         private const int WidthDimension = 0;
         private const int HeightDimension = 1;
+
+        public Cheesboard()
+        {
+            InitializeCheesboardFields();
+        }
+
+        private void InitializeCheesboardFields()
+        {
+            for (int row = 0; row < GetCheesboardHeight(); row++)                
+            {
+                for (int column = 0; column < GetCheesboardWidth(); column++)
+                {
+                    cheesboard[row, column] = CheesboardField.Null;
+                }
+            }
+        }
 
         public int GetCheesboardHeight()
         {
@@ -23,14 +38,45 @@ namespace DraughtsGame
             return cheesboard.GetLength(WidthDimension);
         }
 
-        public CheesboardField GetFieldState(CheesboardFieldCoordinates fieldCoordinates)
+        public FieldColor GetFieldColor(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            ICheesboardField cheesboardField = GetField(fieldCoordinates);
+            return cheesboardField.GetColor();
+        }
+
+        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        {
+            ICheesboardField cheesboardField = GetField(fieldCoordinates);
+            cheesboardField.SetPawn(pawn);
+        }
+        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            ICheesboardField cheesboardField = GetField(fieldCoordinates);
+            IPawn pawn = cheesboardField.PickPawn();
+            return pawn;
+        }
+
+        public void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
+        {
+            ICheesboardField cheesboardField = GetField(fieldCoordinates);
+            cheesboardField.SetColor(fieldColor);
+        }
+
+        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            ICheesboardField cheesboardField = GetField(fieldCoordinates);
+            return cheesboardField.IsEmpty();
+        }
+
+        private ICheesboardField GetField(CheesboardFieldCoordinates fieldCoordinates)
         {
             return cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column];
         }
 
-        public void SetFieldState(CheesboardFieldCoordinates fieldCoordinates, CheesboardField fieldState)
+        public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
         {
-            cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column] = fieldState;
+            ICheesboardField cheesboardField = GetField(fieldCoordinates);
+            return cheesboardField.GetPawn();
         }
     }
 }
