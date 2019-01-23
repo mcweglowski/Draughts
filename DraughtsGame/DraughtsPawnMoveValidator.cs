@@ -41,14 +41,45 @@ namespace DraughtsGame
             IList<CheesboardFieldCoordinates> avaliableDestinationFields = new List<CheesboardFieldCoordinates>();
             IPawn pawn = cheesboard.GetPawn(sourceField);
             IList<MoveCoordinate> moveCoordinates = pawn.GetMoveCoordinates();
+            CheesboardFieldCoordinates cheesboardFiedAvaliableForBasicMove;
 
             foreach (MoveCoordinate moveCoordinate in moveCoordinates)
             {
-                CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates(sourceField.Row + moveCoordinate.Row, sourceField.Column + moveCoordinate.Column);
-                avaliableDestinationFields.Add(cheesboardFieldCoordinates);
+                cheesboardFiedAvaliableForBasicMove = GetAvaliableBasicMove(sourceField, moveCoordinate);
+                if (cheesboardFiedAvaliableForBasicMove != null)
+                {
+                    avaliableDestinationFields.Add(cheesboardFiedAvaliableForBasicMove);
+                }
+
+                cheesboardFiedAvaliableForBasicMove = GetAvaliableBeatingMove(sourceField, cheesboardFiedAvaliableForBasicMove, moveCoordinate);
+                if (cheesboardFiedAvaliableForBasicMove != null)
+                {
+                    avaliableDestinationFields.Add(cheesboardFiedAvaliableForBasicMove);
+                }
             }
 
             return avaliableDestinationFields;
+        }
+
+        private CheesboardFieldCoordinates GetAvaliableBasicMove(CheesboardFieldCoordinates sourceField, MoveCoordinate moveCoordinate)
+        {
+            CheesboardRow avaliableCheesboardRow = sourceField.Row + moveCoordinate.Row;
+            CheesboardColumn avaliableCheesboardColumn = sourceField.Column + moveCoordinate.Column;
+
+            return new CheesboardFieldCoordinates(avaliableCheesboardRow, avaliableCheesboardColumn);
+        }
+
+        private CheesboardFieldCoordinates GetAvaliableBeatingMove(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates cheesboardFiedAvaliableForBasicMove, MoveCoordinate moveCoordinate)
+        {
+            IPawn pawnDuringMove = cheesboard.GetPawn(sourceField);
+            IPawn pawnInMiddleField = cheesboard.GetPawn(cheesboardFiedAvaliableForBasicMove);
+
+            if ((Pawn.Null != pawnInMiddleField) && (pawnDuringMove.GetPlayerColor() != pawnInMiddleField.GetPlayerColor()))
+            {
+                return GetAvaliableBasicMove(cheesboardFiedAvaliableForBasicMove, moveCoordinate);
+            }
+
+            return null;
         }
 
         private bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
