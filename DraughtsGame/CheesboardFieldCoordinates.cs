@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class CheesboardFieldCoordinates
+    public class CheesboardFieldCoordinates : ICheesboardFieldCoordinates
     {
+        public static readonly ICheesboardFieldCoordinates Null = new NullCheesboardFieldCoordinates();
+
         public CheesboardRow Row { get; set; }
         public CheesboardColumn Column { get; set; }
         public CheesboardFieldCoordinates()
@@ -24,6 +27,21 @@ namespace DraughtsGame
         {
             string RowDisplayNumber = ((int)(Row + 1)).ToString();
             return Column.ToString() + RowDisplayNumber;
+        }
+
+        private class NullCheesboardFieldCoordinates : ICheesboardFieldCoordinates
+        {
+            public CheesboardRow Row
+            {
+                get { return CheesboardRow.Zero; }
+                set {  }
+            }
+
+
+            public CheesboardColumn Column
+            { get { return CheesboardColumn.X; }
+              set { }
+            }
         }
     }
 }

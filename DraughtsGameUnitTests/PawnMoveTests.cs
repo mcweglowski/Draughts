@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DraughtsGame.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
 namespace DraughtsGame.Tests_MovePawn
@@ -53,7 +54,7 @@ namespace DraughtsGame.Tests_MovePawn
             return null;
         }
 
-        public FieldColor GetFieldColor(CheesboardFieldCoordinates fieldCoordinates)
+        public FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
@@ -82,7 +83,7 @@ namespace DraughtsGame.Tests_MovePawn
             return new Pawn(PlayerColor.Red, new List<MoveCoordinate>());
         }
 
-        public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }

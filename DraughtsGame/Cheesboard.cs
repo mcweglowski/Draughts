@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace DraughtsGame
 {
     public class Cheesboard : ICheesboard
     {
-        private ICheesboardField[,] cheesboard = new ICheesboardField[Enum.GetNames(typeof(CheesboardColumn)).Length, Enum.GetNames(typeof(CheesboardRow)).Length];
+        private ICheesboardField[,] cheesboard = new ICheesboardField[Enum.GetNames(typeof(CheesboardColumn)).Length - 1, Enum.GetNames(typeof(CheesboardRow)).Length - 1];
         private const int WidthDimension = 0;
         private const int HeightDimension = 1;
 
@@ -38,7 +39,7 @@ namespace DraughtsGame
             return cheesboard.GetLength(WidthDimension);
         }
 
-        public FieldColor GetFieldColor(CheesboardFieldCoordinates fieldCoordinates)
+        public FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates)
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             return cheesboardField.GetColor();
@@ -74,7 +75,7 @@ namespace DraughtsGame
             return cheesboardField.IsEmpty();
         }
 
-        private ICheesboardField GetField(CheesboardFieldCoordinates fieldCoordinates)
+        private ICheesboardField GetField(ICheesboardFieldCoordinates fieldCoordinates)
         {
             return cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column];
         }
@@ -84,7 +85,7 @@ namespace DraughtsGame
             cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column] = cheesboardField;
         }
 
-        public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             return cheesboardField.GetPawn();

@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DraughtsGame;
 using System;
+using DraughtsGame.Interfaces;
 
 namespace DraughtsGame.Tests_CheesboardInitializer
 {
@@ -116,7 +117,7 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             };
         }
 
-        public FieldColor GetFieldColor(CheesboardFieldCoordinates fieldCoordinates)
+        public FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }
@@ -136,7 +137,7 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             throw new NotImplementedException();
         }
 
-        public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }

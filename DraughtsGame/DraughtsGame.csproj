@@ -52,6 +52,7 @@
     <Compile Include="Interfaces\ICheesboard.cs" />
     <Compile Include="DraughtsPawnMoveValidator.cs" />
     <Compile Include="Interfaces\ICheesboardField.cs" />
+    <Compile Include="Interfaces\ICheesboardFieldCoordinates.cs" />
     <Compile Include="Interfaces\ICheesboardInitializer.cs" />
     <Compile Include="Interfaces\IPawn.cs" />
     <Compile Include="MoveCoordinates.cs" />

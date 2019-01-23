@@ -1,4 +1,5 @@
 ﻿using DraughtsGame;
+using DraughtsGame.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
@@ -162,7 +163,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             return 8;
         }
 
-        public FieldColor GetFieldColor(CheesboardFieldCoordinates fieldCoordinates)
+        public FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
@@ -172,7 +173,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             throw new System.NotImplementedException();
         }
 
-        public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
