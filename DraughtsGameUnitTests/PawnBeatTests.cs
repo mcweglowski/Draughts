@@ -97,7 +97,7 @@ namespace DraughtsGame.Tests_PawnBeat
             throw new NotImplementedException();
         }
 
-        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             if (CheesboardColumn.B == fieldCoordinates.Column && CheesboardRow.Two == fieldCoordinates.Row)
             {
@@ -127,7 +127,7 @@ namespace DraughtsGame.Tests_PawnBeat
             throw new NotImplementedException();
         }
 
-        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        public void SetPawn(ICheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
         {
             if (CheesboardColumn.B == fieldCoordinates.Column && CheesboardRow.Two == fieldCoordinates.Row)
             {

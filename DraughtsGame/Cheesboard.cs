@@ -45,12 +45,12 @@ namespace DraughtsGame
             return cheesboardField.GetColor();
         }
 
-        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        public void SetPawn(ICheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             cheesboardField.SetPawn(pawn);
         }
-        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             IPawn pawn = cheesboardField.PickPawn();

@@ -183,7 +183,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             throw new System.NotImplementedException();
         }
 
-        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
@@ -197,7 +197,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
         {
         }
 
-        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        public void SetPawn(ICheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
         {
             if (PlayerColor.Red == pawn.GetPlayerColor())
             {

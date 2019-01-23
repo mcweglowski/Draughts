@@ -18,8 +18,8 @@ namespace DraughtsGame.Tests_MovePawn
         [TestMethod()]
         public void MoveShouldSetDestinationFieldInRedPawnState()
         {
-            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates() { Row = CheesboardRow.One, Column = CheesboardColumn.A };
-            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates() { Row = CheesboardRow.Two, Column = CheesboardColumn.B };
+            ICheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates() { Row = CheesboardRow.One, Column = CheesboardColumn.A };
+            ICheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates() { Row = CheesboardRow.Two, Column = CheesboardColumn.B };
 
             PawnMove movePawn = new PawnMove(cheesboard);
             movePawn.Move(sourceField, destinationField);
@@ -69,7 +69,7 @@ namespace DraughtsGame.Tests_MovePawn
             throw new System.NotImplementedException();
         }
 
-        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        public void SetPawn(ICheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
         {
             if (fieldCoordinates.Column == CheesboardColumn.A && fieldCoordinates.Row == CheesboardRow.One)
                 PawnA1 = pawn;
@@ -78,7 +78,7 @@ namespace DraughtsGame.Tests_MovePawn
                 PawnB2 = pawn;
         }
 
-        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             return new Pawn(PlayerColor.Red, new List<MoveCoordinate>());
         }

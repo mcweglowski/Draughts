@@ -122,12 +122,12 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             throw new NotImplementedException();
         }
 
-        public void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        public void SetPawn(ICheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
         {
             throw new NotImplementedException();
         }
 
-        public IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates)
+        public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }

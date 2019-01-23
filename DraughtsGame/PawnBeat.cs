@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class PawnBeat
+    public class PawnBeat : IPawnMove
     {
         private ICheesboard cheeseboard;
 
