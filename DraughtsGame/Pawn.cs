@@ -18,6 +18,12 @@ namespace DraughtsGame
             this.PawnColor = pawnColor;
             this.MoveDirections = moveCoordinates;
         }
+        public Pawn(PlayerColor pawnColor)
+        {
+            this.PawnColor = pawnColor;
+            this.MoveDirections = new List<MoveCoordinate>();
+        }
+
         public IList<MoveCoordinate> GetMoveCoordinates()
         {
             return MoveDirections;

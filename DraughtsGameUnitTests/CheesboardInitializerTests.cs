@@ -82,20 +82,20 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             throw new NotImplementedException();
         }
 
-        public void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldState)
+        public void SetFieldColor(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldState)
         {
             CountFields(fieldState);
             SetA1Field(fieldCoordinates, fieldState);
             SetH8Field(fieldCoordinates, fieldState);
         }
 
-        private void SetH8Field(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
+        private void SetH8Field(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             if (CheesboardRow.Eight == fieldCoordinates.Row && CheesboardColumn.H == fieldCoordinates.Column)
                 H8field = fieldColor;
         }
 
-        private void SetA1Field(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
+        private void SetA1Field(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             if (CheesboardRow.One == fieldCoordinates.Row && CheesboardColumn.A == fieldCoordinates.Column)
                 A1field = fieldColor;

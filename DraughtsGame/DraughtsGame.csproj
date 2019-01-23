@@ -57,6 +57,7 @@
     <Compile Include="Interfaces\IPawn.cs" />
     <Compile Include="MoveCoordinates.cs" />
     <Compile Include="Pawn.cs" />
+    <Compile Include="PawnBeat.cs" />
     <Compile Include="PawnMove.cs" />
     <Compile Include="Enums\PlayerColor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

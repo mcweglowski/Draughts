@@ -188,7 +188,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             throw new System.NotImplementedException();
         }
 
-        public void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
+        public void SetFieldColor(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             throw new System.NotImplementedException();
         }

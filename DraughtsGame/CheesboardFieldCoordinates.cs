@@ -33,13 +33,13 @@ namespace DraughtsGame
         {
             public CheesboardRow Row
             {
-                get { return CheesboardRow.Zero; }
+                get { return CheesboardRow.NotDefined; }
                 set {  }
             }
 
 
             public CheesboardColumn Column
-            { get { return CheesboardColumn.X; }
+            { get { return CheesboardColumn.NotDefined; }
               set { }
             }
         }

@@ -57,7 +57,7 @@ namespace DraughtsGame
             return pawn;
         }
 
-        public void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
+        public void SetFieldColor(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
 
@@ -80,7 +80,7 @@ namespace DraughtsGame
             return cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column];
         }
 
-        private void SetField(CheesboardFieldCoordinates fieldCoordinates, CheesboardField cheesboardField)
+        private void SetField(ICheesboardFieldCoordinates fieldCoordinates, CheesboardField cheesboardField)
         {
             cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column] = cheesboardField;
         }

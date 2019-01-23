@@ -11,7 +11,7 @@ namespace DraughtsGame
     {
         FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates);
         bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates);
-        void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor);
+        void SetFieldColor(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor);
         void SetPawn(CheesboardFieldCoordinates fieldCoordinates, IPawn pawn);
         IPawn PickPawn(CheesboardFieldCoordinates fieldCoordinates);
         IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates);
