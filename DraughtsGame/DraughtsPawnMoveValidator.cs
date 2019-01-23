@@ -22,7 +22,7 @@ namespace DraughtsGame
 
         public bool IsMoveAvaliable(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
         {
-            if (true == IsFieldEmpty(destinationField))
+            if (false == IsFieldEmpty(destinationField))
             {
                 return false;
             }
