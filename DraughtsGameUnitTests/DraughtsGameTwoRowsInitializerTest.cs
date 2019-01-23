@@ -43,7 +43,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
         }
 
         [TestMethod()]
-        public void TestIfTwoRowsGameInitializedA2ShouldBeNotDefined()
+        public void TestIfTwoRowsGameInitialized_A2shouldBeWithoutPawn()
         {
             CheesboardStub cheesboard = new CheesboardStub();
 
@@ -51,13 +51,12 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
             IPawn actualPawn = cheesboard.A2;
-            PlayerColor actualColor = actualPawn.GetPlayerColor();
 
-            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "A2 field pawn should be NotDefined.");
+            Assert.AreEqual(Pawn.Null, actualPawn, "There should not be pawn on A2 field.");
         }
 
         [TestMethod()]
-        public void TestIfTwoRowsGameInitializedPlacedNotDefinedOnB1()
+        public void TestIfTwoRowsGameInitialized_B1shouldBeWithoutPawn()
         {
             CheesboardStub cheesboard = new CheesboardStub();
 
@@ -65,9 +64,8 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
             IPawn actualPawn = cheesboard.B1;
-            PlayerColor actualColor = actualPawn.GetPlayerColor();
 
-            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "B1 field pawn should be NotDefined.");
+            Assert.AreEqual(Pawn.Null, actualPawn, "There should not be pawn on B1 field.");
         }
 
 
@@ -86,7 +84,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
         }
 
         [TestMethod()]
-        public void TestIfTwoRowsGameInitializedPlacedNotDefinedOnA8()
+        public void TestTwoRowsGameInitialized_A8shouldBeWithoutPawn()
         {
             CheesboardStub cheesboard = new CheesboardStub();
 
@@ -94,13 +92,12 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
             IPawn actualPawn = cheesboard.A8;
-            PlayerColor actualColor = actualPawn.GetPlayerColor();
 
-            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "A8 field pawn should be NotDefined.");
+            Assert.AreEqual(Pawn.Null, actualPawn, "A8 field should be empty.");
         }
 
         [TestMethod()]
-        public void TestIfTwoRowsGameInitializedPlacedNotDefinedOnB7()
+        public void TestIfTwoRowsGameInitialized_B7shouldBeWithoutPawn()
         {
             CheesboardStub cheesboard = new CheesboardStub();
 
@@ -108,9 +105,8 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             draughtsGameTwoRowsInitializer.InitializeNewGame();
 
             IPawn actualPawn = cheesboard.B7;
-            PlayerColor actualColor = actualPawn.GetPlayerColor();
 
-            Assert.AreEqual(PlayerColor.NotDefined, actualColor, "B7 field pawn should be NotDefined.");
+            Assert.AreEqual(Pawn.Null, actualPawn, "B7 field should be empty.");
         }
 
         [TestMethod()]
@@ -147,14 +143,14 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
         public int WhitePawnsCount = 0;
         public int RedPawnsCount = 0;
 
-        public IPawn A1;
-        public IPawn A2;
-        public IPawn B1;
-        public IPawn B2;
-        public IPawn A8;
-        public IPawn B8;
-        public IPawn A7;
-        public IPawn B7;
+        public IPawn A1 = Pawn.Null;
+        public IPawn A2 = Pawn.Null;
+        public IPawn B1 = Pawn.Null;
+        public IPawn B2 = Pawn.Null;
+        public IPawn A8 = Pawn.Null;
+        public IPawn B8 = Pawn.Null;
+        public IPawn A7 = Pawn.Null;
+        public IPawn B7 = Pawn.Null;
 
         public int GetCheesboardHeight()
         {
