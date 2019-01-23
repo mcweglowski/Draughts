@@ -29,7 +29,7 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
         }
 
         [TestMethod()]
-        public void TestIfTwoRowsGameInitializeNotDefinedOnA1()
+        public void TestIfTwoRowsGameInitializeShouldChangeA1FromNotDefinedToWhitePlayerPawn()
         {
             CheesboardStub cheesboard = new CheesboardStub();
 

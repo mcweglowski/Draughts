@@ -25,7 +25,7 @@ namespace DraughtsGame
 
         public PlayerColor GetPlayerColor()
         {
-            throw new NotImplementedException();
+            return PawnColor;
         }
 
         private class NullPawn : IPawn
