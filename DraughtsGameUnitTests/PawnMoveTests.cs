@@ -15,21 +15,6 @@ namespace DraughtsGame.Tests_MovePawn
         }
 
         [TestMethod()]
-        public void MoveShouldSetSourceFieldInEmptyBlackState()
-        {
-            
-            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates() { Row = CheesboardRow.One, Column = CheesboardColumn.A };
-            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates() { Row = CheesboardRow.Two, Column = CheesboardColumn.B };
-
-            PawnMove movePawn = new PawnMove(cheesboard);
-            movePawn.Move(sourceField, destinationField);
-
-            IPawn actualPawn = cheesboard.PawnA1;
-
-            Assert.AreEqual(Pawn.Null, actualPawn, "A1 field should be empty after Pawn move.");
-        }
-
-        [TestMethod()]
         public void MoveShouldSetDestinationFieldInRedPawnState()
         {
             CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates() { Row = CheesboardRow.One, Column = CheesboardColumn.A };
@@ -46,8 +31,8 @@ namespace DraughtsGame.Tests_MovePawn
 
     internal class CheesboardStub : ICheesboard
     {
-        public IPawn PawnA1 {get; set;}
-        public IPawn PawnB2 {get; set;}
+        public IPawn PawnA1 { get; set; } = Pawn.Null;
+        public IPawn PawnB2 { get; set; } = Pawn.Null;
 
         public CheesboardStub()
         {
