@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DraughtsGame;
+using System;
 
 namespace DraughtsGame.Tests_Cheesboard
 {
@@ -63,6 +64,37 @@ namespace DraughtsGame.Tests_Cheesboard
             FieldColor actualFieldColor = cheesboard.GetFieldColor(cheesboardFieldCoordinates);
 
             Assert.AreEqual(expectedFieldColor, actualFieldColor, "H8 Field should be Black.");
+        }
+
+        [TestMethod()]
+        public void SetFieldState_FieldShouldBePossibleToDefineWhenIsNull()
+        {
+            Cheesboard cheesboard = new Cheesboard();
+            CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.A);
+            cheesboard.SetFieldColor(cheesboardFieldCoordinates, FieldColor.Black);
+
+            FieldColor actualFieldColor = cheesboard.GetFieldColor(cheesboardFieldCoordinates);
+
+            Assert.AreEqual(FieldColor.Black, actualFieldColor, "Field color should be set up to Black");
+        }
+
+        [TestMethod()]
+        public void SetFieldState_FieldShouldNotBePossibleToDefineWhenIsNotNull()
+        {
+            Cheesboard cheesboard = new Cheesboard();
+            CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.A);
+            cheesboard.SetFieldColor(cheesboardFieldCoordinates, FieldColor.Black);
+
+            try
+            {
+                cheesboard.SetFieldColor(cheesboardFieldCoordinates, FieldColor.White);
+            }
+            catch (Exception excpetion)
+            {
+                return;
+            }
+
+            Assert.Fail("Expected exception when field was already defined and there is another attempt to set it up.");
         }
     }
 }

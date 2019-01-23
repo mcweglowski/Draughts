@@ -11,6 +11,15 @@ namespace DraughtsGame
         public static readonly ICheesboardField Null = new NullField();
         private FieldColor fieldColor;
         private IPawn pawn = Pawn.Null;
+
+        private CheesboardField()
+        {
+
+        }
+        public CheesboardField(FieldColor fieldColor)
+        {
+            this.fieldColor = fieldColor;
+        }
         public FieldColor GetColor()
         {
             return fieldColor;
@@ -31,11 +40,6 @@ namespace DraughtsGame
             IPawn pawn = this.pawn;
             this.pawn = Pawn.Null;
             return pawn;
-        }
-
-        public void SetColor(FieldColor fieldColor)
-        {
-            this.fieldColor = fieldColor;
         }
 
         public void SetPawn(IPawn pawn)

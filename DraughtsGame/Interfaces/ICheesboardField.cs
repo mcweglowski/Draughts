@@ -9,7 +9,6 @@ namespace DraughtsGame
     public interface ICheesboardField
     {
         FieldColor GetColor();
-        void SetColor(FieldColor fieldColor);
         IPawn PickPawn();
         IPawn GetPawn();
         void SetPawn(IPawn pawn);

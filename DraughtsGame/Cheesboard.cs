@@ -59,7 +59,13 @@ namespace DraughtsGame
         public void SetFieldColor(CheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
-            cheesboardField.SetColor(fieldColor);
+
+            if (CheesboardField.Null != cheesboardField)
+            {
+                throw new Exception("Field already established. It can not be redefined again.");
+            }
+
+            SetField(fieldCoordinates, new CheesboardField(fieldColor));
         }
 
         public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
@@ -71,6 +77,11 @@ namespace DraughtsGame
         private ICheesboardField GetField(CheesboardFieldCoordinates fieldCoordinates)
         {
             return cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column];
+        }
+
+        private void SetField(CheesboardFieldCoordinates fieldCoordinates, CheesboardField cheesboardField)
+        {
+            cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column] = cheesboardField;
         }
 
         public IPawn GetPawn(CheesboardFieldCoordinates fieldCoordinates)
