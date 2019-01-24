@@ -23,7 +23,21 @@ namespace DraughtsGame
 
         public void Move(ICheesboardFieldCoordinates sourceFieldCoordinates, ICheesboardFieldCoordinates destinationFieldCoordinates)
         {
-            throw new NotImplementedException();
+            ICheesboardFieldCoordinates middleFieldCoordinates = GetMiddleField(sourceFieldCoordinates, destinationFieldCoordinates);
+            IPawn beaterPawn = cheeseboard.PickPawn(sourceFieldCoordinates);
+            cheeseboard.SetPawn(destinationFieldCoordinates, beaterPawn);
+            cheeseboard.PickPawn(middleFieldCoordinates);
+        }
+
+        private ICheesboardFieldCoordinates GetMiddleField(ICheesboardFieldCoordinates sourceFieldCoordinates, ICheesboardFieldCoordinates destinationFieldCoordinates)
+        {
+            IList<CheesboardRow> rows = Enum.GetValues(typeof(CheesboardRow)).Cast<CheesboardRow>().ToList();
+            CheesboardRow cheesboardRow = rows.First(x => (x > sourceFieldCoordinates.Row && x < destinationFieldCoordinates.Row) || (x < sourceFieldCoordinates.Row && x > destinationFieldCoordinates.Row));
+
+            IList<CheesboardColumn> columns = Enum.GetValues(typeof(CheesboardColumn)).Cast<CheesboardColumn>().ToList();
+            CheesboardColumn cheesboardColumn = columns.First(x => (x > sourceFieldCoordinates.Column && x < destinationFieldCoordinates.Column) || (x < sourceFieldCoordinates.Column && x > destinationFieldCoordinates.Column));
+
+            return new CheesboardFieldCoordinates(cheesboardRow, cheesboardColumn);
         }
     }
 }

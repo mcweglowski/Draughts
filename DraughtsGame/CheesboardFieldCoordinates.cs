@@ -15,7 +15,8 @@ namespace DraughtsGame
         public CheesboardColumn Column { get; set; }
         public CheesboardFieldCoordinates()
         {
-
+            Row = CheesboardRow.NotDefined;
+            Column = CheesboardColumn.NotDefined;
         }
         public CheesboardFieldCoordinates(CheesboardRow Row, CheesboardColumn Column)
         {

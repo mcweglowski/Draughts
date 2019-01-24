@@ -89,7 +89,27 @@ namespace DraughtsGame.Tests_PawnBeat
 
         public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
-            throw new NotImplementedException();
+            if (CheesboardColumn.B == fieldCoordinates.Column && CheesboardRow.Two == fieldCoordinates.Row)
+            {
+                return GetPawn(B2);
+            }
+
+            if (CheesboardColumn.C == fieldCoordinates.Column && CheesboardRow.Three == fieldCoordinates.Row)
+            {
+                return GetPawn(C3);
+            }
+
+            if (CheesboardColumn.D == fieldCoordinates.Column && CheesboardRow.Four == fieldCoordinates.Row)
+            {
+                return GetPawn(D4);
+            }
+
+            return Pawn.Null;
+        }
+
+        private IPawn GetPawn(ICheesboardField cheesboardField)
+        {
+            return cheesboardField.GetPawn();
         }
 
         public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
