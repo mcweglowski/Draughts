@@ -8,8 +8,8 @@ namespace DraughtsGame.Interfaces
 {
     public interface ICheesboardFieldCoordinates
     {
-        CheesboardRow Row { get; set; }
-        CheesboardColumn Column { get; set; }
+        CheesboardRow Row { get; }
+        CheesboardColumn Column { get; }
         string ToString();
     }
 }

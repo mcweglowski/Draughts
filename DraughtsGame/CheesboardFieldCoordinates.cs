@@ -35,14 +35,33 @@ namespace DraughtsGame
             public CheesboardRow Row
             {
                 get { return CheesboardRow.NotDefined; }
-                set {  }
             }
 
 
             public CheesboardColumn Column
             { get { return CheesboardColumn.NotDefined; }
-              set { }
             }
         }
-    }
+
+        public override bool Equals(object obj)
+        {
+            CheesboardFieldCoordinates cheesboardFieldCoordinates = obj as CheesboardFieldCoordinates;
+            return Column == cheesboardFieldCoordinates.Column && Row == cheesboardFieldCoordinates.Row;
+        }
+
+        public static bool operator == (CheesboardFieldCoordinates x, CheesboardFieldCoordinates y)
+        {
+            return x.Column == y.Column && x.Row == y.Row;
+        }
+
+        public static bool operator != (CheesboardFieldCoordinates x, CheesboardFieldCoordinates y)
+        {
+            return x.Column != y.Column || x.Row != y.Row;
+        }
+
+		public override int GetHashCode()
+		{
+			return 0;
+		}
+	}
 }

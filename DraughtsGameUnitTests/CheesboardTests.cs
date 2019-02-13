@@ -89,7 +89,7 @@ namespace DraughtsGame.Tests_Cheesboard
             {
                 cheesboard.SetFieldColor(cheesboardFieldCoordinates, FieldColor.White);
             }
-            catch (Exception excpetion)
+            catch
             {
                 return;
             }

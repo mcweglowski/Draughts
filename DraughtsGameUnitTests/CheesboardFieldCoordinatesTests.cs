@@ -21,5 +21,32 @@ namespace DraughtsGame.Tests_CheesboardFieldCoordinates
 
             Assert.AreEqual(expectedCoordinatesString, actualCoordinatesString);
         }
-    }
+
+		[TestMethod()]
+		public void TestEqualsOperatorOverride()
+		{
+			CheesboardFieldCoordinates firstField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A);
+			CheesboardFieldCoordinates secondField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A);
+
+			Assert.IsTrue(firstField == secondField);
+		}
+
+		[TestMethod()]
+		public void TestNotEqualsOperatorOverride()
+		{
+			CheesboardFieldCoordinates firstField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A);
+			CheesboardFieldCoordinates secondField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.D);
+
+			Assert.IsTrue(firstField != secondField);
+		}
+
+		[TestMethod()]
+		public void TestEqualsOperator()
+		{
+			CheesboardFieldCoordinates firstField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A);
+			CheesboardFieldCoordinates secondField = new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A);
+
+			Assert.IsTrue(firstField.Equals(secondField));
+		}
+	}
 }

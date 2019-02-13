@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cheesboard.cs" />
+    <Compile Include="DraughtsAvaliableBeatsFinder.cs" />
     <Compile Include="Enums\CheesboardColumns.cs" />
     <Compile Include="CheesboardField.cs" />
     <Compile Include="CheesboardFieldCoordinates.cs" />
