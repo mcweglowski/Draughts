@@ -253,53 +253,5 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
 
             Assert.IsTrue(actualIsMoveAvaliable, "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
         }
-
-        [TestMethod()]
-        public void shouldNotAllowAnyOtherMoveIfBeatIsPossible()
-        {
-            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.E);
-            CheesboardFieldCoordinates toBeatField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.F);
-            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.D);
-
-            cheesboard.SetPawn(sourceField, redPawn);
-            cheesboard.SetPawn(toBeatField, whitePawn);
-
-            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
-
-            Assert.IsFalse(actualIsMoveAvaliable, "When beat is possible it should not allow any other move.");
-        }
-
-        [TestMethod()]
-        public void shouldNotAllowAnyOtherMoveIfBeatIsPossible_EvenIfBeatIsInNotDefinedDirection()
-        {
-            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.F);
-            CheesboardFieldCoordinates toBeatField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.E);
-            CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(CheesboardRow.Six, CheesboardColumn.D);
-
-            cheesboard.SetPawn(sourceField, redPawn);
-            cheesboard.SetPawn(toBeatField, whitePawn);
-
-            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
-
-            Assert.IsTrue(actualIsMoveAvaliable, "When beat is possible it should not allow any other move.");
-        }
-
-        [TestMethod()]
-        public void shouldAllowOnlyBeatMoveWhenNormalMoveIsPossible()
-        {
-            CheesboardFieldCoordinates sourceField = new CheesboardFieldCoordinates(CheesboardRow.Five, CheesboardColumn.E);
-            CheesboardFieldCoordinates toBeatField = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.F);
-            CheesboardFieldCoordinates beatField = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.G);
-
-            cheesboard.SetPawn(sourceField, redPawn);
-            cheesboard.SetPawn(toBeatField, whitePawn);
-
-            DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, beatField);
-
-            Assert.IsTrue(actualIsMoveAvaliable, "When beat is possible it should not allow any other move.");
-        }
     }
 }
