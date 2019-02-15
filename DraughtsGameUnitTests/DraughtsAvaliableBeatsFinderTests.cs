@@ -23,6 +23,8 @@ namespace DraughtsGameUnitTests_DraughtsAvaliableBeatsFinder
         public void TestInitialize()
         {
             cheesboard = new Cheesboard();
+			CheesboardInitializer cheesboardInitializer = new CheesboardInitializer(cheesboard);
+			cheesboardInitializer.InitNewCheesboard();
         }
 
         [TestMethod()]
