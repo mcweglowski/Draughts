@@ -16,38 +16,49 @@ namespace DraughtsGame
 
         public IList<CheesboardFieldCoordinates> GetAvaliableBeats(CheesboardFieldCoordinates sourceField)
         {
+            int DestinationFieldCalculateOffset = 2;
 			PlayerColor activePlayerColor = cheesboard.GetPawn(sourceField).GetPlayerColor();
 			IList<CheesboardFieldCoordinates> result = new List<CheesboardFieldCoordinates>();
 
-			for (int Row = -1; Row <= 1; Row = Row + 2)
+			for (int MiddleRow = -1; MiddleRow <= 1; MiddleRow = MiddleRow + 2)
 			{
-				int destinationRowShift = Row * 2;
+				int destinationRowShift = MiddleRow * DestinationFieldCalculateOffset;
 				CheesboardRow destinationFieldRow = sourceField.Row + destinationRowShift;
-				CheesboardRow middleFieldRow = sourceField.Row + Row;
-				for (int Column = -1; Column <= 1; Column = Column + 2)
+				CheesboardRow middleFieldRow = sourceField.Row + MiddleRow;
+
+                for (int Middle = -1; Middle <= 1; Middle = Middle + DestinationFieldCalculateOffset)
 				{
-					int destinationColumnShift = Column * 2;
+					int destinationColumnShift = Middle * 2;
 					CheesboardColumn destinationFieldColumn = sourceField.Column + destinationColumnShift;
-					CheesboardColumn middleFieldColumn = sourceField.Column + Column;
+					CheesboardColumn middleFieldColumn = sourceField.Column + Middle;
 
 					CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(destinationFieldRow, destinationFieldColumn);
 					CheesboardFieldCoordinates middleField = new CheesboardFieldCoordinates(middleFieldRow, middleFieldColumn);
 
-					if (cheesboard.IsFieldEmpty(destinationField))
+					if (true == IsBeatAvaliable(middleField, destinationField, activePlayerColor))
 					{
-						if (false == cheesboard.IsFieldEmpty(middleField))
-						{
-							if (activePlayerColor != cheesboard.GetPawn(middleField).GetPlayerColor())
-							{
-								result.Add(destinationField);
-							}
-						}
+						result.Add(destinationField);
 					}
-
 				}
 			}
 
 			return result;
+		}
+
+		private bool IsBeatAvaliable(CheesboardFieldCoordinates middleField, CheesboardFieldCoordinates destinationField, PlayerColor activePlayerColor)
+		{
+			if (true == cheesboard.IsFieldOccupied(destinationField))
+			{
+				return false;
+			}
+
+			if (false == cheesboard.IsFieldOccupied(middleField))
+			{
+				return false;
+			}
+
+            IPawn middlePawn = cheesboard.GetPawn(middleField);
+            return activePlayerColor != middlePawn.GetPlayerColor();
 		}
     }
 }

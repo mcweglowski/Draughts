@@ -183,6 +183,11 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             throw new System.NotImplementedException();
         }
 
+        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();

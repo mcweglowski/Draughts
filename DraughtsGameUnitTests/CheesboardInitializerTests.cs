@@ -141,5 +141,10 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         {
             throw new NotImplementedException();
         }
+
+        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

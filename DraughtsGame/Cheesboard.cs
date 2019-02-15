@@ -75,7 +75,13 @@ namespace DraughtsGame
             return cheesboardField.IsEmpty();
         }
 
-        private ICheesboardField GetField(ICheesboardFieldCoordinates fieldCoordinates)
+		public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+		{
+			ICheesboardField cheesboardField = GetField(fieldCoordinates);
+			return false == cheesboardField.IsEmpty();
+		}
+
+		private ICheesboardField GetField(ICheesboardFieldCoordinates fieldCoordinates)
         {
             return cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column];
         }
@@ -90,5 +96,6 @@ namespace DraughtsGame
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             return cheesboardField.GetPawn();
         }
-    }
+
+	}
 }

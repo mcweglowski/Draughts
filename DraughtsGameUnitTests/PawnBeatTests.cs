@@ -169,5 +169,10 @@ namespace DraughtsGame.Tests_PawnBeat
         {
             cheesboardField.SetPawn(pawn);
         }
+
+        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
