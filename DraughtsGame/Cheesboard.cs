@@ -10,8 +10,8 @@ namespace DraughtsGame
     public class Cheesboard : ICheesboard
     {
         private ICheesboardField[,] cheesboard = new ICheesboardField[Enum.GetNames(typeof(CheesboardColumn)).Length - 1, Enum.GetNames(typeof(CheesboardRow)).Length - 1];
-        private const int WidthDimension = 0;
-        private const int HeightDimension = 1;
+        private const int ColumnsDimension = 0;
+        private const int RowsDimension = 1;
 
         public Cheesboard()
         {
@@ -31,12 +31,12 @@ namespace DraughtsGame
 
         public int GetCheesboardHeight()
         {
-            return cheesboard.GetLength(HeightDimension);
+            return cheesboard.GetLength(RowsDimension);
         }
 
         public int GetCheesboardWidth()
         {
-            return cheesboard.GetLength(WidthDimension);
+            return cheesboard.GetLength(ColumnsDimension);
         }
 
         public FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates)
@@ -83,7 +83,27 @@ namespace DraughtsGame
 
 		private ICheesboardField GetField(ICheesboardFieldCoordinates fieldCoordinates)
         {
+            if (false == IsColumnInRange(fieldCoordinates.Column))
+            {
+                return CheesboardField.Null;
+            }
+
+            if (false == IsRowInRange(fieldCoordinates.Row))
+            {
+                return CheesboardField.Null;
+            }
+
             return cheesboard[(int)fieldCoordinates.Row, (int)fieldCoordinates.Column];
+        }
+
+        private bool IsRowInRange(CheesboardRow Row)
+        {
+            return Row >= 0 && (int)Row < cheesboard.GetLength(RowsDimension);
+        }
+
+        private bool IsColumnInRange(CheesboardColumn Column)
+        {
+            return Column >= 0 && (int)Column < cheesboard.GetLength(ColumnsDimension);
         }
 
         private void SetField(ICheesboardFieldCoordinates fieldCoordinates, CheesboardField cheesboardField)

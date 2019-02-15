@@ -81,6 +81,51 @@ namespace DraughtsGameUnitTests_DraughtsAvaliableBeatsFinder
             Assert.IsNotNull(avaliableBeats.Where(x => x == expectedFieldB2).FirstOrDefault());
 			Assert.IsNotNull(avaliableBeats.Where(x => x == expectedFieldF6).FirstOrDefault());
 		}
-	}
+
+        [TestMethod]
+        public void shouldReturnC1AsAvaliableBeatMove()
+        {
+            CheesboardFieldCoordinates sourceFieldA3 = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.A);
+            CheesboardFieldCoordinates expectedFieldC1 = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C);
+            cheesboard.SetPawn(sourceFieldA3, new Pawn(PlayerColor.Red));
+            cheesboard.SetPawn(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new Pawn(PlayerColor.White));
+
+            DraughtsAvaliableBeatsFinder draughtsAvaliableBeatsFinder = new DraughtsAvaliableBeatsFinder(cheesboard);
+            IList<CheesboardFieldCoordinates> avaliableBeats = draughtsAvaliableBeatsFinder.GetAvaliableBeats(sourceFieldA3);
+
+            Assert.AreEqual(1, avaliableBeats.Count);
+            Assert.IsNotNull(avaliableBeats.Where(x => x == expectedFieldC1).FirstOrDefault());
+        }
+
+        [TestMethod]
+        public void shouldNotReturnAnyAvaliableBeatMoveWhenDestinationOccupiedByOponent()
+        {
+            CheesboardFieldCoordinates sourceFieldA3 = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.A);
+            CheesboardFieldCoordinates expectedFieldC1 = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C);
+            cheesboard.SetPawn(sourceFieldA3, new Pawn(PlayerColor.Red));
+            cheesboard.SetPawn(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new Pawn(PlayerColor.White));
+            cheesboard.SetPawn(new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C), new Pawn(PlayerColor.White));
+
+            DraughtsAvaliableBeatsFinder draughtsAvaliableBeatsFinder = new DraughtsAvaliableBeatsFinder(cheesboard);
+            IList<CheesboardFieldCoordinates> avaliableBeats = draughtsAvaliableBeatsFinder.GetAvaliableBeats(sourceFieldA3);
+
+            Assert.AreEqual(0, avaliableBeats.Count);
+        }
+
+        [TestMethod]
+        public void shouldNotReturnAnyAvaliableBeatMoveWhenDestinationOccupiedByActivePlayer()
+        {
+            CheesboardFieldCoordinates sourceFieldA3 = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.A);
+            CheesboardFieldCoordinates expectedFieldC1 = new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C);
+            cheesboard.SetPawn(sourceFieldA3, new Pawn(PlayerColor.Red));
+            cheesboard.SetPawn(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new Pawn(PlayerColor.White));
+            cheesboard.SetPawn(new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C), new Pawn(PlayerColor.Red));
+
+            DraughtsAvaliableBeatsFinder draughtsAvaliableBeatsFinder = new DraughtsAvaliableBeatsFinder(cheesboard);
+            IList<CheesboardFieldCoordinates> avaliableBeats = draughtsAvaliableBeatsFinder.GetAvaliableBeats(sourceFieldA3);
+
+            Assert.AreEqual(0, avaliableBeats.Count);
+        }
+    }
 
 }
