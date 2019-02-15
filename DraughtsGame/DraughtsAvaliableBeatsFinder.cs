@@ -19,59 +19,31 @@ namespace DraughtsGame
 			PlayerColor activePlayerColor = cheesboard.GetPawn(sourceField).GetPlayerColor();
 			IList<CheesboardFieldCoordinates> result = new List<CheesboardFieldCoordinates>();
 
-            if (sourceField.Row - 2 >= CheesboardRow.One && sourceField.Column - 2 >= CheesboardColumn.A)
+			for (int Row = -1; Row <= 1; Row = Row + 2)
 			{
-				if (cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row - 2, sourceField.Column - 2)))
+				int destinationRowShift = Row * 2;
+				CheesboardRow destinationFieldRow = sourceField.Row + destinationRowShift;
+				CheesboardRow middleFieldRow = sourceField.Row + Row;
+				for (int Column = -1; Column <= 1; Column = Column + 2)
 				{
-					if (false == cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row - 1, sourceField.Column - 1)))
-					{
-						if (activePlayerColor != cheesboard.GetPawn(new CheesboardFieldCoordinates(sourceField.Row - 1, sourceField.Column - 1)).GetPlayerColor())
-						{
-							result.Add(new CheesboardFieldCoordinates(sourceField.Row - 2, sourceField.Column - 2));
-						}
-					}
-				}
-			}
+					int destinationColumnShift = Column * 2;
+					CheesboardColumn destinationFieldColumn = sourceField.Column + destinationColumnShift;
+					CheesboardColumn middleFieldColumn = sourceField.Column + Column;
 
-			if (sourceField.Row - 2 >= CheesboardRow.One && sourceField.Column + 2 <= CheesboardColumn.H)
-			{
-				if (cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row - 2, sourceField.Column + 2)))
-				{
-					if (false == cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row - 1, sourceField.Column + 1)))
-					{
-						if (activePlayerColor != cheesboard.GetPawn(new CheesboardFieldCoordinates(sourceField.Row - 1, sourceField.Column + 1)).GetPlayerColor())
-						{
-							result.Add(new CheesboardFieldCoordinates(sourceField.Row - 2, sourceField.Column + 2));
-						}
-					}
-				}
-			}
+					CheesboardFieldCoordinates destinationField = new CheesboardFieldCoordinates(destinationFieldRow, destinationFieldColumn);
+					CheesboardFieldCoordinates middleField = new CheesboardFieldCoordinates(middleFieldRow, middleFieldColumn);
 
-			if (sourceField.Row + 2 <= CheesboardRow.Eight && sourceField.Column - 2 >= CheesboardColumn.A)
-			{
-				if (cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row + 2, sourceField.Column - 2)))
-				{
-					if (false == cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row + 1, sourceField.Column - 1)))
+					if (cheesboard.IsFieldEmpty(destinationField))
 					{
-						if (activePlayerColor != cheesboard.GetPawn(new CheesboardFieldCoordinates(sourceField.Row + 1, sourceField.Column - 1)).GetPlayerColor())
+						if (false == cheesboard.IsFieldEmpty(middleField))
 						{
-							result.Add(new CheesboardFieldCoordinates(sourceField.Row + 2, sourceField.Column - 2));
+							if (activePlayerColor != cheesboard.GetPawn(middleField).GetPlayerColor())
+							{
+								result.Add(destinationField);
+							}
 						}
 					}
-				}
-			}
 
-			if (sourceField.Row + 2 < CheesboardRow.Eight && sourceField.Column + 2 <= CheesboardColumn.H)
-			{
-				if (cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row + 2, sourceField.Column + 2)))
-				{
-					if (false == cheesboard.IsFieldEmpty(new CheesboardFieldCoordinates(sourceField.Row + 1, sourceField.Column + 1)))
-					{
-						if (activePlayerColor != cheesboard.GetPawn(new CheesboardFieldCoordinates(sourceField.Row + 1, sourceField.Column + 1)).GetPlayerColor())
-						{
-							result.Add(new CheesboardFieldCoordinates(sourceField.Row + 2, sourceField.Column + 2));
-						}
-					}
 				}
 			}
 
