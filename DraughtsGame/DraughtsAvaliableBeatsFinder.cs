@@ -20,7 +20,7 @@ namespace DraughtsGame
 			PlayerColor activePlayerColor = cheesboard.GetPawn(sourceField).GetPlayerColor();
 			IList<CheesboardFieldCoordinates> result = new List<CheesboardFieldCoordinates>();
 
-			for (int MiddleRow = -1; MiddleRow <= 1; MiddleRow = MiddleRow + 2)
+			for (int MiddleRow = -1; MiddleRow <= 1; MiddleRow = MiddleRow + DestinationFieldCalculateOffset)
 			{
 				int destinationRowShift = MiddleRow * DestinationFieldCalculateOffset;
 				CheesboardRow destinationFieldRow = sourceField.Row + destinationRowShift;
@@ -28,7 +28,7 @@ namespace DraughtsGame
 
                 for (int Middle = -1; Middle <= 1; Middle = Middle + DestinationFieldCalculateOffset)
 				{
-					int destinationColumnShift = Middle * 2;
+					int destinationColumnShift = Middle * DestinationFieldCalculateOffset;
 					CheesboardColumn destinationFieldColumn = sourceField.Column + destinationColumnShift;
 					CheesboardColumn middleFieldColumn = sourceField.Column + Middle;
 
