@@ -174,5 +174,10 @@ namespace DraughtsGame.Tests_PawnBeat
         {
             throw new NotImplementedException();
         }
+
+        public string GetColumnName(int columnIndex)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -13,9 +13,12 @@ namespace DraughtsGame
         private const int ColumnsDimension = 0;
         private const int RowsDimension = 1;
 
-        public Cheesboard()
+        public Cheesboard(ICheesboardInitializer cheesboardInitializer)
         {
             InitializeCheesboardFields();
+
+            cheesboardInitializer.SetCheesboard(this);
+            cheesboardInitializer.InitNewCheesboard();
         }
 
         private void InitializeCheesboardFields()
@@ -116,6 +119,5 @@ namespace DraughtsGame
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             return cheesboardField.GetPawn();
         }
-
-	}
+    }
 }

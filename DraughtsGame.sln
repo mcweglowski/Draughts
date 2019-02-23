@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraughtsGame", "DraughtsGam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraughtsGameUnitTests", "DraughtsGameUnitTests\DraughtsGameUnitTests.csproj", "{5CD8007E-2EF5-4ABE-8E62-04CBDDDBB8D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraughtsConsolePrinter", "DraughtsConsolePrinter\DraughtsConsolePrinter.csproj", "{FB595E48-E463-4698-8B53-4E1E7F3AAB39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraughtsConsole", "DraughtsConsole\DraughtsConsole.csproj", "{55CC8778-D71D-419B-8A2D-2A63B42296CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{5CD8007E-2EF5-4ABE-8E62-04CBDDDBB8D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CD8007E-2EF5-4ABE-8E62-04CBDDDBB8D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CD8007E-2EF5-4ABE-8E62-04CBDDDBB8D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB595E48-E463-4698-8B53-4E1E7F3AAB39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB595E48-E463-4698-8B53-4E1E7F3AAB39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB595E48-E463-4698-8B53-4E1E7F3AAB39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB595E48-E463-4698-8B53-4E1E7F3AAB39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55CC8778-D71D-419B-8A2D-2A63B42296CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55CC8778-D71D-419B-8A2D-2A63B42296CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55CC8778-D71D-419B-8A2D-2A63B42296CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55CC8778-D71D-419B-8A2D-2A63B42296CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

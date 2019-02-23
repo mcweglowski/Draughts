@@ -163,6 +163,11 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             return 8;
         }
 
+        public string GetColumnName(int columnIndex)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();

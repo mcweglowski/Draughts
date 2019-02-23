@@ -9,7 +9,7 @@ namespace DraughtsGame
     public class CheesboardInitializer : ICheesboardInitializer
     {
         private ICheesboard cheesboard;
-        private CheesboardInitializer() { }
+        public CheesboardInitializer() { }
         public CheesboardInitializer(ICheesboard cheesboard)
         {
             this.cheesboard = cheesboard;

@@ -11,15 +11,14 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
     [TestClass()]
     public class PawnMoveValidatorTests
     {
-        ICheesboard cheesboard = new Cheesboard();
+        ICheesboard cheesboard;
         IPawn whitePawn;
         IPawn redPawn;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            CheesboardInitializer cheesboardInitializer = new CheesboardInitializer(cheesboard);
-            cheesboardInitializer.InitNewCheesboard();
+            cheesboard = new Cheesboard(new CheesboardInitializer());
 
             whitePawn = new Pawn(PlayerColor.White, new List<MoveCoordinate>() { new MoveCoordinate(1, -1), new MoveCoordinate(1, 1) });
             redPawn = new Pawn(PlayerColor.Red, new List<MoveCoordinate>() { new MoveCoordinate(-1, -1), new MoveCoordinate(-1, 1) });

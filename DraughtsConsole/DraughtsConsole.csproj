@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6A5C80CC-7C40-48D7-A036-C4EBBDC526E7}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DraughtsGame</RootNamespace>
-    <AssemblyName>DraughtsGame</AssemblyName>
+    <ProjectGuid>{55CC8778-D71D-419B-8A2D-2A63B42296CB}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>DraughtsConsole</RootNamespace>
+    <AssemblyName>DraughtsConsole</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -41,29 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cheesboard.cs" />
-    <Compile Include="DraughtsAvaliableBeatsFinder.cs" />
-    <Compile Include="DraughtsGame.cs" />
-    <Compile Include="Enums\CheesboardColumns.cs" />
-    <Compile Include="CheesboardField.cs" />
-    <Compile Include="CheesboardFieldCoordinates.cs" />
-    <Compile Include="Enums\CheeseboardRow.cs" />
-    <Compile Include="CheesboardInitializer.cs" />
-    <Compile Include="DraughtsGameTwoRowsInitializer.cs" />
-    <Compile Include="Enums\FieldColor.cs" />
-    <Compile Include="Interfaces\ICheesboard.cs" />
-    <Compile Include="DraughtsPawnMoveValidator.cs" />
-    <Compile Include="Interfaces\ICheesboardField.cs" />
-    <Compile Include="Interfaces\ICheesboardFieldCoordinates.cs" />
-    <Compile Include="Interfaces\ICheesboardInitializer.cs" />
-    <Compile Include="Interfaces\IPawn.cs" />
-    <Compile Include="Interfaces\IPawnMove.cs" />
-    <Compile Include="MoveCoordinates.cs" />
-    <Compile Include="Pawn.cs" />
-    <Compile Include="PawnBeat.cs" />
-    <Compile Include="PawnMove.cs" />
-    <Compile Include="Enums\PlayerColor.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DraughtsConsolePrinter\DraughtsConsolePrinter.csproj">
+      <Project>{fb595e48-e463-4698-8b53-4e1e7f3aab39}</Project>
+      <Name>DraughtsConsolePrinter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

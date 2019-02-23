@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6A5C80CC-7C40-48D7-A036-C4EBBDC526E7}</ProjectGuid>
+    <ProjectGuid>{FB595E48-E463-4698-8B53-4E1E7F3AAB39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DraughtsGame</RootNamespace>
-    <AssemblyName>DraughtsGame</AssemblyName>
+    <RootNamespace>DraughtsConsolePrinter</RootNamespace>
+    <AssemblyName>DraughtsConsolePrinter</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,29 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cheesboard.cs" />
-    <Compile Include="DraughtsAvaliableBeatsFinder.cs" />
-    <Compile Include="DraughtsGame.cs" />
-    <Compile Include="Enums\CheesboardColumns.cs" />
-    <Compile Include="CheesboardField.cs" />
-    <Compile Include="CheesboardFieldCoordinates.cs" />
-    <Compile Include="Enums\CheeseboardRow.cs" />
-    <Compile Include="CheesboardInitializer.cs" />
-    <Compile Include="DraughtsGameTwoRowsInitializer.cs" />
-    <Compile Include="Enums\FieldColor.cs" />
-    <Compile Include="Interfaces\ICheesboard.cs" />
-    <Compile Include="DraughtsPawnMoveValidator.cs" />
-    <Compile Include="Interfaces\ICheesboardField.cs" />
-    <Compile Include="Interfaces\ICheesboardFieldCoordinates.cs" />
-    <Compile Include="Interfaces\ICheesboardInitializer.cs" />
-    <Compile Include="Interfaces\IPawn.cs" />
-    <Compile Include="Interfaces\IPawnMove.cs" />
-    <Compile Include="MoveCoordinates.cs" />
-    <Compile Include="Pawn.cs" />
-    <Compile Include="PawnBeat.cs" />
-    <Compile Include="PawnMove.cs" />
-    <Compile Include="Enums\PlayerColor.cs" />
+    <Compile Include="DraughtsCheesboardPrinter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DraughtsGame\DraughtsGame.csproj">
+      <Project>{6A5C80CC-7C40-48D7-A036-C4EBBDC526E7}</Project>
+      <Name>DraughtsGame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
