@@ -21,19 +21,56 @@ namespace DraughtsConsolePrinter
 
         public void PrintCheesboard()
         {
-            Console.Clear();
 
-            string TopColumnNames = PrintTopColumnNames();
+            string ColumnNames = PrintTopColumnNames();
 
-            for (CheesboardRow Row = CheesboardRow.Eight; Row > 0; Row-- )
+            IList<string> cheesboardRows = new List<string>();
+            StringBuilder cheesboardRow = new StringBuilder();
+
+            for (CheesboardRow Row = CheesboardRow.Eight; Row >= 0; Row-- )
             {
+                cheesboardRow.Clear();
+                cheesboardRow.AppendFormat("{0} ", ((int)Row) +1);
                 for (CheesboardColumn Column = CheesboardColumn.A; (int)Column <= cheesboard.GetCheesboardWidth(); Column++)
                 {
-
+                    CheesboardFieldCoordinates cheesboardFieldCoordinates = new CheesboardFieldCoordinates(Row, Column);
+                    FieldColor currentFieldColor = cheesboard.GetFieldColor(cheesboardFieldCoordinates);
+                    IPawn currentPawn = cheesboard.GetPawn(cheesboardFieldCoordinates);
+                    string printField = GetPrint(currentFieldColor, currentPawn);
+                    cheesboardRow.Append(printField);
                 }
+                cheesboardRows.Add(cheesboardRow.ToString());
             }
 
-            Console.WriteLine(TopColumnNames);
+            Console.Clear();
+            Console.WriteLine(ColumnNames);
+            Console.WriteLine();
+            foreach (string printRow in cheesboardRows)
+            {
+                Console.WriteLine(printRow);
+            }
+        }
+
+        private string GetPrint(FieldColor fieldColor, IPawn pawn)
+        {
+            if (FieldColor.White == fieldColor)
+            {
+                return "OO";
+            }
+
+            PlayerColor playerColor = pawn.GetPlayerColor();
+
+            if (PlayerColor.Red == playerColor)
+            {
+                return "RR";
+            }
+
+            if (PlayerColor.White == playerColor)
+            {
+                return "WW";
+            }
+
+            return "  ";
         }
 
         private string PrintTopColumnNames()
@@ -41,12 +78,9 @@ namespace DraughtsConsolePrinter
             StringBuilder TopColumnNames = new StringBuilder();
             TopColumnNames.Append("  ");
 
-
-
-
-            foreach (string ColumnName in Enum.GetNames(typeof(CheesboardColumn)))
+            for (int ColumnIndex = 0; ColumnIndex < cheesboard.GetCheesboardWidth(); ColumnIndex++)
             {
-                TopColumnNames.AppendFormat(" {0}", ColumnName);
+                TopColumnNames.AppendFormat("{0}{0}", cheesboard.GetColumnName(ColumnIndex));
             }
 
             return TopColumnNames.ToString();
