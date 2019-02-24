@@ -13,6 +13,11 @@ namespace DraughtsGame
         private const int ColumnsDimension = 0;
         private const int RowsDimension = 1;
 
+        public Cheesboard()
+        {
+
+        }
+
         public Cheesboard(ICheesboardInitializer cheesboardInitializer)
         {
             InitializeCheesboardFields();
@@ -123,6 +128,16 @@ namespace DraughtsGame
         public void InitializeGame(IGameInitializer gameInitializer)
         {
             gameInitializer.InitializeNewGame(this);
+        }
+
+        public char GetColumnName(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public char GetRowName(int index)
+        {
+            throw new NotImplementedException();
         }
     }
 }

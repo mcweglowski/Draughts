@@ -184,5 +184,15 @@ namespace DraughtsGame.Tests_PawnBeat
         {
             throw new NotImplementedException();
         }
+
+        char ICheesboard.GetColumnName(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public char GetRowName(int index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

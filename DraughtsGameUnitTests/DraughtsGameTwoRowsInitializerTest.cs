@@ -183,6 +183,11 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             throw new System.NotImplementedException();
         }
 
+        public char GetRowName(int index)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void InitializeGame(IGameInitializer gameInitializer)
         {
             throw new System.NotImplementedException();
@@ -262,6 +267,11 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             {
                 B7 = pawn;
             }
+        }
+
+        char ICheesboard.GetColumnName(int index)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

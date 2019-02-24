@@ -151,5 +151,15 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         {
             throw new NotImplementedException();
         }
+
+        public char GetColumnName(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public char GetRowName(int index)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

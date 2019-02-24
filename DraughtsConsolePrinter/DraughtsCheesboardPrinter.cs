@@ -19,13 +19,11 @@ namespace DraughtsConsolePrinter
             this.cheesboard = cheesboard;
         }
 
-        public void printCheesboard(ICheesboard cheesboard)
+        public void PrintCheesboard()
         {
-            this.cheesboard = cheesboard;
-
             Console.Clear();
 
-            PrintTopColumnNames();
+            string TopColumnNames = PrintTopColumnNames();
 
             for (CheesboardRow Row = CheesboardRow.Eight; Row > 0; Row-- )
             {
@@ -34,17 +32,24 @@ namespace DraughtsConsolePrinter
 
                 }
             }
+
+            Console.WriteLine(TopColumnNames);
         }
 
-        private void PrintTopColumnNames()
+        private string PrintTopColumnNames()
         {
             StringBuilder TopColumnNames = new StringBuilder();
             TopColumnNames.Append("  ");
+
+
+
 
             foreach (string ColumnName in Enum.GetNames(typeof(CheesboardColumn)))
             {
                 TopColumnNames.AppendFormat(" {0}", ColumnName);
             }
+
+            return TopColumnNames.ToString();
         }
     }
 }

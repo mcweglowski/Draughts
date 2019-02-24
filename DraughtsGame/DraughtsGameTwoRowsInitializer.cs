@@ -23,7 +23,8 @@ namespace DraughtsGame
 
         public void InitializeNewGame(ICheesboard cheesboard)
         {
-            throw new NotImplementedException();
+            this.cheesboard = cheesboard;
+            InitializeNewGame();
         }
 
 

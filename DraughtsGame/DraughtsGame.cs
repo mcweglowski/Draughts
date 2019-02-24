@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class DraughtsGame
+    public class Draughts
     {
         public ICheesboard cheesboard { get; } = new Cheesboard(new CheesboardInitializer());
 
-        public DraughtsGame()
+        public Draughts()
         {
             cheesboard.InitializeGame(new DraughtsGameTwoRowsInitializer());
         }

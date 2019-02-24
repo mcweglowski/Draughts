@@ -97,5 +97,15 @@ namespace DraughtsGame.Tests_MovePawn
         {
             throw new System.NotImplementedException();
         }
+
+        public char GetColumnName(int index)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public char GetRowName(int index)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

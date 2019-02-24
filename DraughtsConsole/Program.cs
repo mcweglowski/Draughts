@@ -1,4 +1,5 @@
 using DraughtsConsolePrinter;
+using DraughtsGame;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,12 @@ namespace DraughtsConsole
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            
-
-            DraughtsCheesboardPrinter draughtsCheesboardPrinter = new DraughtsCheesboardPrinter();
+            Draughts draughtsGame = new Draughts();
+            DraughtsCheesboardPrinter draughtsCheesboardPrinter = new DraughtsCheesboardPrinter(draughtsGame.cheesboard);
+            draughtsCheesboardPrinter.PrintCheesboard();
 
             Console.ReadKey();
         }

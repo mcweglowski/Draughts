@@ -53,6 +53,10 @@
       <Project>{fb595e48-e463-4698-8b53-4e1e7f3aab39}</Project>
       <Name>DraughtsConsolePrinter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DraughtsGame\DraughtsGame.csproj">
+      <Project>{6A5C80CC-7C40-48D7-A036-C4EBBDC526E7}</Project>
+      <Name>DraughtsGame</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

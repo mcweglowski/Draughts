@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DraughtsGame;
 using System;
+using System.Text;
 
 namespace DraughtsGame.Tests_Cheesboard
 {
@@ -97,6 +98,36 @@ namespace DraughtsGame.Tests_Cheesboard
             }
 
             Assert.Fail("Expected exception when field was already defined and there is another attempt to set it up.");
+        }
+
+        [TestMethod()]
+        public void shouldReturnAllColumnNames()
+        {
+            string ExpectedColumns = "ABCDEFGH";
+
+            StringBuilder ActualColumns = new StringBuilder(); 
+            ICheesboard cheesboard = new Cheesboard();
+            for (int ColumnIndex = 0; ColumnIndex < cheesboard.GetCheesboardWidth(); ColumnIndex++ )
+            {
+                ActualColumns.Append(cheesboard.GetColumnName(ColumnIndex));
+            }
+
+            Assert.AreEqual(ExpectedColumns, ActualColumns.ToString());
+        }
+
+        [TestMethod()]
+        public void shouldReturnAllRowNames()
+        {
+            string ExpectedList = "12345678";
+
+            StringBuilder ActualRows = new StringBuilder();
+            ICheesboard cheesboard = new Cheesboard();
+            for (int RowIndex = 0; RowIndex < cheesboard.GetCheesboardHeight(); RowIndex++)
+            {
+                ActualRows.Append(cheesboard.GetColumnName(RowIndex));
+            }
+
+            Assert.AreEqual(ExpectedList, ActualRows.ToString());
         }
     }
 
