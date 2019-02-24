@@ -146,5 +146,10 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         {
             throw new NotImplementedException();
         }
+
+        public void InitializeGame(IGameInitializer gameInitializer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

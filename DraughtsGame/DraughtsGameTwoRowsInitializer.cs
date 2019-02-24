@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,25 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class DraughtsGameTwoRowsInitializer
+    public class DraughtsGameTwoRowsInitializer : IGameInitializer
     {
         private ICheesboard cheesboard;
+
+        public DraughtsGameTwoRowsInitializer()
+        {
+
+        }
 
         public DraughtsGameTwoRowsInitializer(ICheesboard cheesboard)
         {
             this.cheesboard = cheesboard;
         }
+
+        public void InitializeNewGame(ICheesboard cheesboard)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public void InitializeNewGame()
         {

@@ -183,6 +183,11 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             throw new System.NotImplementedException();
         }
 
+        public void InitializeGame(IGameInitializer gameInitializer)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();

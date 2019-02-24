@@ -18,5 +18,6 @@ namespace DraughtsGame
         IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates);
         int GetCheesboardWidth();
         int GetCheesboardHeight();
+        void InitializeGame(IGameInitializer gameInitializer);
     }
 }

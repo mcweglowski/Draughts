@@ -179,5 +179,10 @@ namespace DraughtsGame.Tests_PawnBeat
         {
             throw new NotImplementedException();
         }
+
+        public void InitializeGame(IGameInitializer gameInitializer)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

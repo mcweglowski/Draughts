@@ -119,5 +119,10 @@ namespace DraughtsGame
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             return cheesboardField.GetPawn();
         }
+
+        public void InitializeGame(IGameInitializer gameInitializer)
+        {
+            gameInitializer.InitializeNewGame(this);
+        }
     }
 }

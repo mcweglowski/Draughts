@@ -8,10 +8,11 @@ namespace DraughtsGame
 {
     public class DraughtsGame
     {
-        ICheesboard cheesboard = new Cheesboard(new CheesboardInitializer());
+        public ICheesboard cheesboard { get; } = new Cheesboard(new CheesboardInitializer());
 
         public DraughtsGame()
         {
+            cheesboard.InitializeGame(new DraughtsGameTwoRowsInitializer());
         }
     }
 }

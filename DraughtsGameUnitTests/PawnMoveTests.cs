@@ -92,5 +92,10 @@ namespace DraughtsGame.Tests_MovePawn
         {
             throw new System.NotImplementedException();
         }
+
+        public void InitializeGame(IGameInitializer gameInitializer)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
