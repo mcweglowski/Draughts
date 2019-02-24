@@ -130,14 +130,14 @@ namespace DraughtsGame
             gameInitializer.InitializeNewGame(this);
         }
 
-        public char GetColumnName(int index)
+        public string GetColumnName(int index)
         {
-            throw new NotImplementedException();
+            return Enum.GetName(typeof(CheesboardColumn), index);
         }
 
-        public char GetRowName(int index)
+        public string GetRowName(int index)
         {
-            throw new NotImplementedException();
+            return Enum.GetName(typeof(CheesboardRow), index);
         }
     }
 }

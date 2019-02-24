@@ -175,22 +175,17 @@ namespace DraughtsGame.Tests_PawnBeat
             throw new NotImplementedException();
         }
 
-        public string GetColumnName(int columnIndex)
-        {
-            throw new NotImplementedException();
-        }
-
         public void InitializeGame(IGameInitializer gameInitializer)
         {
             throw new NotImplementedException();
         }
 
-        char ICheesboard.GetColumnName(int index)
+        public string GetRowName(int index)
         {
             throw new NotImplementedException();
         }
 
-        public char GetRowName(int index)
+        public string GetColumnName(int index)
         {
             throw new NotImplementedException();
         }

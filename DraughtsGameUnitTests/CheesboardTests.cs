@@ -118,13 +118,13 @@ namespace DraughtsGame.Tests_Cheesboard
         [TestMethod()]
         public void shouldReturnAllRowNames()
         {
-            string ExpectedList = "12345678";
+            string ExpectedList = "OneTwoThreeFourFiveSixSevenEight";
 
             StringBuilder ActualRows = new StringBuilder();
             ICheesboard cheesboard = new Cheesboard();
             for (int RowIndex = 0; RowIndex < cheesboard.GetCheesboardHeight(); RowIndex++)
             {
-                ActualRows.Append(cheesboard.GetColumnName(RowIndex));
+                ActualRows.Append(cheesboard.GetRowName(RowIndex));
             }
 
             Assert.AreEqual(ExpectedList, ActualRows.ToString());

@@ -98,12 +98,12 @@ namespace DraughtsGame.Tests_MovePawn
             throw new System.NotImplementedException();
         }
 
-        public char GetColumnName(int index)
+        public string GetColumnName(int index)
         {
             throw new System.NotImplementedException();
         }
 
-        public char GetRowName(int index)
+        public string GetRowName(int index)
         {
             throw new System.NotImplementedException();
         }

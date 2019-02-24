@@ -19,7 +19,7 @@ namespace DraughtsGame
         int GetCheesboardWidth();
         int GetCheesboardHeight();
         void InitializeGame(IGameInitializer gameInitializer);
-        char GetColumnName(int index);
-        char GetRowName(int index);
+        string GetColumnName(int index);
+        string GetRowName(int index);
     }
 }
