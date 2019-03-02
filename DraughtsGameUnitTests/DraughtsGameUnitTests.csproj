@@ -53,6 +53,7 @@
     <Compile Include="CheesboardInitializerTests.cs" />
     <Compile Include="CheesboardTests.cs" />
     <Compile Include="DraughtsAvaliableBeatsFinderTests.cs" />
+    <Compile Include="DraughtsEngineTests.cs" />
     <Compile Include="DraughtsGameTwoRowsInitializerTest.cs" />
     <Compile Include="PawnBeatTests.cs" />
     <Compile Include="PawnMoveTests.cs" />

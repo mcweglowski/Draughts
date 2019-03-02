@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Cheesboard.cs" />
     <Compile Include="DraughtsAvaliableBeatsFinder.cs" />
-    <Compile Include="DraughtsGame.cs" />
+    <Compile Include="DraughtsEngine.cs" />
     <Compile Include="Enums\CheesboardColumns.cs" />
     <Compile Include="CheesboardField.cs" />
     <Compile Include="CheesboardFieldCoordinates.cs" />
@@ -56,7 +56,7 @@
     <Compile Include="Interfaces\ICheesboardField.cs" />
     <Compile Include="Interfaces\ICheesboardFieldCoordinates.cs" />
     <Compile Include="Interfaces\ICheesboardInitializer.cs" />
-    <Compile Include="Interfaces\IDraughts.cs" />
+    <Compile Include="Interfaces\IDraughtsEngine.cs" />
     <Compile Include="Interfaces\IGameInitializer.cs" />
     <Compile Include="Interfaces\IPawn.cs" />
     <Compile Include="Interfaces\IPawnMove.cs" />

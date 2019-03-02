@@ -14,7 +14,7 @@ namespace DraughtsConsole
 
         static void Main(string[] args)
         {
-            IDraughts draughtsGame = new Draughts();
+            IDraughtsEngine draughtsGame = new DraughtsEngine();
             DraughtsCheesboardPrinter draughtsCheesboardPrinter = new DraughtsCheesboardPrinter(draughtsGame.cheesboard);
             draughtsCheesboardPrinter.PrintCheesboard();
 
