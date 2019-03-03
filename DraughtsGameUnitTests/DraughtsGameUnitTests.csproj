@@ -59,6 +59,7 @@
     <Compile Include="PawnMoveTests.cs" />
     <Compile Include="DraughtsPawnMoveValidatorTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ActivePlayerManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

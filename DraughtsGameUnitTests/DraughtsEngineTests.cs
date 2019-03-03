@@ -98,7 +98,12 @@ namespace DraughtsGameUnitTests
         [TestMethod]
         public void shouldNotSwitchPlayerWhenMoveFailed()
         {
-            Assert.Fail();
+            IDraughtsEngine draughtsEngine = new DraughtsEngine();
+            bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A), new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C));
+            PlayerColor activePlayer = draughtsEngine.ActivePlayer;
+
+            Assert.IsFalse(moveResult);
+            Assert.AreEqual(PlayerColor.White, activePlayer);
         }
     }
 }

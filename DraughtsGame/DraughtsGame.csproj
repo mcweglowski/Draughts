@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivePlayerManager.cs" />
     <Compile Include="Cheesboard.cs" />
     <Compile Include="DraughtsAvaliableBeatsFinder.cs" />
     <Compile Include="DraughtsEngine.cs" />
@@ -51,6 +52,7 @@
     <Compile Include="CheesboardInitializer.cs" />
     <Compile Include="DraughtsGameTwoRowsInitializer.cs" />
     <Compile Include="Enums\FieldColor.cs" />
+    <Compile Include="Interfaces\IActivePlayerManager.cs" />
     <Compile Include="Interfaces\ICheesboard.cs" />
     <Compile Include="DraughtsPawnMoveValidator.cs" />
     <Compile Include="Interfaces\ICheesboardField.cs" />
