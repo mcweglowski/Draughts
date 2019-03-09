@@ -9,7 +9,7 @@ namespace DraughtsGame
 {
     public class DraughtsPawnMoveValidator
     {
-        ICheesboard cheesboard;
+        private ICheesboard cheesboard;
 
         private DraughtsPawnMoveValidator()
         {
@@ -21,25 +21,37 @@ namespace DraughtsGame
             this.cheesboard = cheesboard;
         }
 
-        public bool IsMoveAvaliable(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+        public IMove IsMoveAvaliable(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
         {
             if (false == IsFieldEmpty(destinationField))
             {
-                return false;
+                return PawnMove.Null;
             }
 
-            IList<ICheesboardFieldCoordinates> avaliableDestinationFields = GetAvaliableDestinationFields(sourceField);
+            IList<MoveParameters> avaliableDestinationFields = GetAvaliableDestinationFields(sourceField);
             return IsDestinationFieldInAvaliableDestinationFieldsForPawn(destinationField, avaliableDestinationFields);
         }
 
-        private static bool IsDestinationFieldInAvaliableDestinationFieldsForPawn(CheesboardFieldCoordinates destinationField, IList<ICheesboardFieldCoordinates> avaliableDestinationFields)
+        private IMove IsDestinationFieldInAvaliableDestinationFieldsForPawn(CheesboardFieldCoordinates destinationField, IList<MoveParameters> avaliableDestinationFields)
         {
-            return null != avaliableDestinationFields.FirstOrDefault(x => x.Row == destinationField.Row && x.Column == destinationField.Column);
+            MoveType moveType = avaliableDestinationFields.Where(x => x.CheesboardFieldCoordinates.Row == destinationField.Row && x.CheesboardFieldCoordinates.Column == destinationField.Column).Select(x => x.MoveType).DefaultIfEmpty(MoveType.None).FirstOrDefault();
+
+            switch (moveType)
+            {
+                case MoveType.Move:
+                        return new PawnMove(cheesboard);
+                case MoveType.Beat:
+                        return new PawnBeat(cheesboard);
+                case MoveType.None:
+                        return new NullMove();
+                default:
+                    throw new Exception("Fatal error: not implemented move type.");
+            }
         }
 
-        private IList<ICheesboardFieldCoordinates> GetAvaliableDestinationFields(ICheesboardFieldCoordinates sourceField)
+        private IList<MoveParameters> GetAvaliableDestinationFields(ICheesboardFieldCoordinates sourceField)
         {
-            IList<ICheesboardFieldCoordinates> avaliableDestinationFields = new List<ICheesboardFieldCoordinates>();
+            IList<MoveParameters> avaliableDestinationFields = new List<MoveParameters>();
             IPawn pawn = cheesboard.GetPawn(sourceField);
             IList<MoveCoordinate> moveCoordinates = pawn.GetMoveCoordinates();
             ICheesboardFieldCoordinates cheesboardFiedAvaliableForBasicMove;
@@ -47,10 +59,10 @@ namespace DraughtsGame
             foreach (MoveCoordinate moveCoordinate in moveCoordinates)
             {
                 cheesboardFiedAvaliableForBasicMove = GenerateAvaliableMove(sourceField, moveCoordinate);
-                avaliableDestinationFields.Add(cheesboardFiedAvaliableForBasicMove);
+                avaliableDestinationFields.Add(new MoveParameters() { CheesboardFieldCoordinates = cheesboardFiedAvaliableForBasicMove, MoveType = MoveType.Move } );
 
                 cheesboardFiedAvaliableForBasicMove = GetAvaliableBeatingMove(sourceField, cheesboardFiedAvaliableForBasicMove, moveCoordinate);
-                avaliableDestinationFields.Add(cheesboardFiedAvaliableForBasicMove);
+                avaliableDestinationFields.Add(new MoveParameters() { CheesboardFieldCoordinates = cheesboardFiedAvaliableForBasicMove, MoveType = MoveType.Beat }) ;
             }
 
             return avaliableDestinationFields;
@@ -96,5 +108,11 @@ namespace DraughtsGame
         {
             return cheesboard.IsFieldEmpty(fieldCoordinates);
         }
+    }
+    
+    public class MoveParameters
+    {
+        public ICheesboardFieldCoordinates CheesboardFieldCoordinates { get; set; }
+        public MoveType MoveType { get; set; }
     }
 }

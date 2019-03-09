@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class PawnBeat : IPawnMove
+    public class PawnBeat : IMove
     {
         ICheesboard cheesboard;
+        public static readonly IMove Null = new NullMove();
         private PawnBeat()
         {
 
@@ -20,13 +21,15 @@ namespace DraughtsGame
             this.cheesboard = cheeseboard;
         }
 
-        public void Move(ICheesboardFieldCoordinates sourceFieldCoordinates, ICheesboardFieldCoordinates destinationFieldCoordinates)
+        public bool Move(ICheesboardFieldCoordinates sourceFieldCoordinates, ICheesboardFieldCoordinates destinationFieldCoordinates)
         {
             IPawn pawn = cheesboard.PickPawn(sourceFieldCoordinates);
             cheesboard.SetPawn(destinationFieldCoordinates, pawn);
 
             ICheesboardFieldCoordinates middleFieldCoordinates = GetMiddleField(sourceFieldCoordinates, destinationFieldCoordinates);
             cheesboard.PickPawn(middleFieldCoordinates);
+
+            return true;
         }
 
         private ICheesboardFieldCoordinates GetMiddleField(ICheesboardFieldCoordinates sourceFieldCoordinates, ICheesboardFieldCoordinates destinationFieldCoordinates)

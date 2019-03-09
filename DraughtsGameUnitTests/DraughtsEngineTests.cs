@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using DraughtsGame.Interfaces;
 using DraughtsGame;
 
-namespace DraughtsGameUnitTests
+namespace DraughtsGame.Tests_DraughtsEngine
 {
     /// <summary>
     /// Summary description for DraughtsEngineTests
@@ -63,7 +63,7 @@ namespace DraughtsGameUnitTests
         [TestMethod]
         public void shouldHaveWhitePlayerAsActiveWhenGameStarts()
         {
-            IDraughtsEngine draughtsEngine = new DraughtsEngine();
+            IDraughtsEngine draughtsEngine = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 
             Assert.AreEqual(PlayerColor.White, activePlayer);
@@ -72,8 +72,12 @@ namespace DraughtsGameUnitTests
         [TestMethod]
         public void shouldSwithPlayerToOponentWhenMovePawnReturnTrue()
         {
-            IDraughtsEngine draughtsEngine = new DraughtsEngine();
-            bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A), new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C));
+            ICheesboard cheesboard = new Cheesboard(new CheesboardInitializer());
+
+            IDraughtsEngine draughtsEngine = new DraughtsEngine(cheesboard, new DraughtsGameTwoRowsInitializer());
+           
+
+            bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.C));
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 
             Assert.IsTrue(moveResult);
@@ -83,14 +87,14 @@ namespace DraughtsGameUnitTests
         [TestMethod]
         public void shouldHaveWhitePlayerAsActiveAfterTwoSuccesfullMoves()
         {
-            IDraughtsEngine draughtsEngine = new DraughtsEngine();
-            bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A), new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C));
+            IDraughtsEngine draughtsEngine = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+            bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.C));
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 
             Assert.IsTrue(moveResult);
             Assert.AreEqual(PlayerColor.Red, activePlayer);
 
-            moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A), new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C));
+            moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Seven, CheesboardColumn.A), new CheesboardFieldCoordinates(CheesboardRow.Six, CheesboardColumn.B));
             activePlayer = draughtsEngine.ActivePlayer;
             Assert.AreEqual(PlayerColor.White, activePlayer);
         }
@@ -98,12 +102,75 @@ namespace DraughtsGameUnitTests
         [TestMethod]
         public void shouldNotSwitchPlayerWhenMoveFailed()
         {
-            IDraughtsEngine draughtsEngine = new DraughtsEngine();
-            bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Eight, CheesboardColumn.A), new CheesboardFieldCoordinates(CheesboardRow.One, CheesboardColumn.C));
+            IDraughtsEngine draughtsEngine = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+            bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.D));
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 
             Assert.IsFalse(moveResult);
             Assert.AreEqual(PlayerColor.White, activePlayer);
+        }
+    }
+
+    public class CheesboardStub : ICheesboard
+    {
+        public int GetCheesboardHeight()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetCheesboardWidth()
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetColumnName(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public string GetRowName(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void InitializeGame(IGameInitializer gameInitializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetFieldColor(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetPawn(ICheesboardFieldCoordinates fieldCoordinates, IPawn pawn)
+        {
+            throw new NotImplementedException();
         }
     }
 }

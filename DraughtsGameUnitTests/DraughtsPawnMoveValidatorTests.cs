@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DraughtsGame.Interfaces;
 
 namespace DraughtsGame.Tests_PawnMoveValidatorTests
 {
@@ -20,8 +21,8 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         {
             cheesboard = new Cheesboard(new CheesboardInitializer());
 
-            whitePawn = new Pawn(PlayerColor.White, new List<MoveCoordinate>() { new MoveCoordinate(1, -1), new MoveCoordinate(1, 1) });
-            redPawn = new Pawn(PlayerColor.Red, new List<MoveCoordinate>() { new MoveCoordinate(-1, -1), new MoveCoordinate(-1, 1) });
+            whitePawn = new Pawn(PlayerColor.White, new List<MoveCoordinate>() { new MoveCoordinate(1, -1), new MoveCoordinate(1, 1) }, cheesboard);
+            redPawn = new Pawn(PlayerColor.Red, new List<MoveCoordinate>() { new MoveCoordinate(-1, -1), new MoveCoordinate(-1, 1) }, cheesboard);
         }
 
         [TestMethod()]
@@ -33,9 +34,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move  = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("White Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("White Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -47,9 +48,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsTrue(actualIsMoveAvaliable, string.Format("White Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsTrue(move.Move(sourceField, destinationField), string.Format("White Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -61,9 +62,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("White Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("White Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -75,9 +76,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsTrue(actualIsMoveAvaliable, string.Format("White Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsTrue(move.Move(sourceField, destinationField), string.Format("White Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -89,9 +90,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -103,9 +104,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -117,9 +118,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -131,9 +132,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -145,9 +146,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, redPawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsTrue(actualIsMoveAvaliable, string.Format("Red Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsTrue(move.Move(sourceField, destinationField), string.Format("Red Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -159,9 +160,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, redPawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("Red Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("Red Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -173,9 +174,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, redPawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsTrue(actualIsMoveAvaliable, string.Format("Red Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsTrue(move.Move(sourceField, destinationField), string.Format("Red Pawn should have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -187,9 +188,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, redPawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, string.Format("Red Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
+            Assert.IsFalse(move.Move(sourceField, destinationField), string.Format("Red Pawn should not have possibility to move from {0} to {1}", sourceField, destinationField));
         }
 
         [TestMethod()]
@@ -202,9 +203,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(destinationField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, "Move should not be possible, destination field is occupied.");
+            Assert.IsFalse(move.Move(sourceField, destinationField), "Move should not be possible, destination field is occupied.");
         }
 
         [TestMethod()]
@@ -216,9 +217,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(sourceField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsFalse(actualIsMoveAvaliable, "Pawn should not be able to move two fields forward if middle field is empty.");
+            Assert.IsFalse(move.Move(sourceField, destinationField), "Pawn should not be able to move two fields forward if middle field is empty.");
         }
 
         [TestMethod()]
@@ -232,9 +233,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(middleField, redPawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsTrue(actualIsMoveAvaliable, "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
+            Assert.IsTrue(move.Move(sourceField, destinationField), "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
         }
 
         [TestMethod()]
@@ -248,9 +249,9 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
             cheesboard.SetPawn(middleField, whitePawn);
 
             DraughtsPawnMoveValidator pawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
-            bool actualIsMoveAvaliable = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+            IMove move = pawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
 
-            Assert.IsTrue(actualIsMoveAvaliable, "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
+            Assert.IsTrue(move.Move(sourceField, destinationField), "Pawn should be able to move two fields forward if middle field is occupied by oponent pawn.");
         }
     }
 }

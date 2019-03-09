@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame.Interfaces
 {
-    public interface IPawnMove
+    public interface IMove
     {
-        void Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField);
+        bool Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField);
     }
 }

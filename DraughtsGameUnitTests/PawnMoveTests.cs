@@ -80,7 +80,7 @@ namespace DraughtsGame.Tests_MovePawn
 
         public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
-            return new Pawn(PlayerColor.Red, new List<MoveCoordinate>());
+            return new Pawn(PlayerColor.Red, new List<MoveCoordinate>(), new Cheesboard());
         }
 
         public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)

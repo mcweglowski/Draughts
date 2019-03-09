@@ -10,5 +10,6 @@ namespace DraughtsGame
     {
         IList<MoveCoordinate> GetMoveCoordinates();
         PlayerColor GetPlayerColor();
+        bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField);
     }
 }

@@ -9,31 +9,38 @@ namespace DraughtsGame
 {
     public class DraughtsEngine : IDraughtsEngine
     {
-        public ICheesboard cheesboard { get; } = new Cheesboard(new CheesboardInitializer());
+        public ICheesboard Cheesboard { get; }
+        IActivePlayerManager activePlayerManager = new ActivePlayerManager();
 
         public string GameCommand { get; }
 
-        private PlayerColor activePlayer;
-
         public PlayerColor ActivePlayer
         {
-            get { return activePlayer; }
+            get { return activePlayerManager.ActivePlayer; }
         }
 
-
-        public DraughtsEngine()
+        private DraughtsEngine()
         {
-            cheesboard.InitializeGame(new DraughtsGameTwoRowsInitializer());
-            activePlayer = PlayerColor.White;
+
+        }
+
+        public DraughtsEngine(ICheesboard cheesboard, IGameInitializer gameInitializer)
+        {
+            Cheesboard = cheesboard;
+            Cheesboard.InitializeGame(gameInitializer);
         }
 
         public bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
         {
-            PawnMove pawnMove = new PawnMove(cheesboard);
-            pawnMove.Move(sourceField, destinationField);
+            IPawn pawn = Cheesboard.GetPawn(sourceField);
 
-            activePlayer = SwitchPlayer(ActivePlayer);
-            return true;
+            if (true == pawn.Move(sourceField, destinationField))
+            {
+                activePlayerManager.SwitchPlayer();
+                return true;
+            }
+
+            return false;
         }
 
         private PlayerColor SwitchPlayer(PlayerColor activePlayer)

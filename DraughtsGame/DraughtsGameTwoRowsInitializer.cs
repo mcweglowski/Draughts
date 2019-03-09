@@ -45,7 +45,7 @@ namespace DraughtsGame
             {
                 for (fieldCoordinates.Column = GetFirstBlackFieldForRow(fieldCoordinates.Row); (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column = fieldCoordinates.Column + 2)
                 {
-                    cheesboard.SetPawn(fieldCoordinates, new Pawn(playerColor, newPawnMoveCoordinates));
+                    cheesboard.SetPawn(fieldCoordinates, new Pawn(playerColor, newPawnMoveCoordinates, cheesboard));
                 }
             }
         }
@@ -61,7 +61,7 @@ namespace DraughtsGame
             {
                 for (fieldCoordinates.Column = GetFirstBlackFieldForRow(fieldCoordinates.Row); (int)fieldCoordinates.Column < cheesboard.GetCheesboardWidth(); fieldCoordinates.Column = fieldCoordinates.Column + 2)
                 {
-                    cheesboard.SetPawn(fieldCoordinates, new Pawn(playerColor, newPawnMoveCoordinates));
+                    cheesboard.SetPawn(fieldCoordinates, new Pawn(playerColor, newPawnMoveCoordinates, cheesboard));
                 }
             }
         }

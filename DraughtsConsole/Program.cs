@@ -11,11 +11,10 @@ namespace DraughtsConsole
 {
     class Program
     {
-
         static void Main(string[] args)
         {
-            IDraughtsEngine draughtsGame = new DraughtsEngine();
-            DraughtsCheesboardPrinter draughtsCheesboardPrinter = new DraughtsCheesboardPrinter(draughtsGame.cheesboard);
+            IDraughtsEngine draughtsGame = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+            DraughtsCheesboardPrinter draughtsCheesboardPrinter = new DraughtsCheesboardPrinter(draughtsGame.Cheesboard);
             draughtsCheesboardPrinter.PrintCheesboard();
 
             Console.WriteLine("");

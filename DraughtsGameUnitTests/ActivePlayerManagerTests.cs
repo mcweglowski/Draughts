@@ -3,7 +3,7 @@ using DraughtsGame;
 using DraughtsGame.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace DraughtsGameUnitTests
+namespace DraughtsTests.Tests_ActivePlayerManagerTests
 {
     [TestClass]
     public class ActivePlayerManagerTests
@@ -32,7 +32,7 @@ namespace DraughtsGameUnitTests
             activePlayerManager.SwitchPlayer();
             activePlayerManager.SwitchPlayer();
 
-            Assert.AreEqual(PlayerColor.Red, activePlayerManager.ActivePlayer);
+            Assert.AreEqual(PlayerColor.White, activePlayerManager.ActivePlayer);
         }
     }
 }

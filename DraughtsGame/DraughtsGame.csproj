@@ -52,6 +52,7 @@
     <Compile Include="CheesboardInitializer.cs" />
     <Compile Include="DraughtsGameTwoRowsInitializer.cs" />
     <Compile Include="Enums\FieldColor.cs" />
+    <Compile Include="Enums\MoveType.cs" />
     <Compile Include="Interfaces\IActivePlayerManager.cs" />
     <Compile Include="Interfaces\ICheesboard.cs" />
     <Compile Include="DraughtsPawnMoveValidator.cs" />
@@ -61,8 +62,9 @@
     <Compile Include="Interfaces\IDraughtsEngine.cs" />
     <Compile Include="Interfaces\IGameInitializer.cs" />
     <Compile Include="Interfaces\IPawn.cs" />
-    <Compile Include="Interfaces\IPawnMove.cs" />
+    <Compile Include="Interfaces\IMove.cs" />
     <Compile Include="MoveCoordinates.cs" />
+    <Compile Include="NullMove.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="PawnBeat.cs" />
     <Compile Include="PawnMove.cs" />

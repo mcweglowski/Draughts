@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,13 @@ namespace DraughtsGame
 
         public IList<MoveCoordinate> MoveDirections { get; set; } = new List<MoveCoordinate>();
 
-        public Pawn(PlayerColor pawnColor, IList<MoveCoordinate> moveCoordinates)
+        private ICheesboard cheesboard;
+
+        public Pawn(PlayerColor pawnColor, IList<MoveCoordinate> moveCoordinates, ICheesboard cheesboard)
         {
             this.PawnColor = pawnColor;
             this.MoveDirections = moveCoordinates;
+            this.cheesboard = cheesboard;
         }
         public Pawn(PlayerColor pawnColor)
         {
@@ -34,12 +38,26 @@ namespace DraughtsGame
             return PawnColor;
         }
 
+        public bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+        {
+            DraughtsPawnMoveValidator draughtsPawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
+
+            IMove move = draughtsPawnMoveValidator.IsMoveAvaliable(sourceField, destinationField);
+
+            return move.Move(sourceField, destinationField);
+        }
+
         private class NullPawn : IPawn
         {
             private readonly IList<MoveCoordinate> MoveDirections = new List<MoveCoordinate>();
             public PlayerColor GetPlayerColor()
             {
                 return PlayerColor.NotDefined;
+            }
+
+            public bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+            {
+                return false;
             }
 
             IList<MoveCoordinate> IPawn.GetMoveCoordinates()

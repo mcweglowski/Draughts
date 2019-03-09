@@ -9,11 +9,28 @@ namespace DraughtsGame
 {
     public class ActivePlayerManager : IActivePlayerManager
     {
-        public PlayerColor ActivePlayer => throw new NotImplementedException();
+        private PlayerColor activePlayer;
+
+        public PlayerColor ActivePlayer
+        {
+            get { return activePlayer; }
+        }
+
+
+        public ActivePlayerManager()
+        {
+            activePlayer = PlayerColor.White;
+        }
 
         public void SwitchPlayer()
         {
-            throw new NotImplementedException();
+            if (PlayerColor.White == ActivePlayer)
+            {
+                activePlayer = PlayerColor.Red;
+                return;
+            }
+
+            activePlayer = PlayerColor.White;
         }
     }
 }

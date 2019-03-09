@@ -7,10 +7,11 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class PawnMove : IPawnMove
+    public class PawnMove : IMove
     {
         ICheesboard cheesboard;
 
+        public static readonly IMove Null = new NullMove();
         private PawnMove()
         {
 
@@ -21,10 +22,12 @@ namespace DraughtsGame
             this.cheesboard = cheesboard;
         }
 
-        public void Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField)
+        public bool Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField)
         {
             IPawn pawn = cheesboard.PickPawn(sourceField);
             cheesboard.SetPawn(destinationField, pawn);
+
+            return true;
         }
     }
 }
