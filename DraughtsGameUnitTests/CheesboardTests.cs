@@ -106,7 +106,7 @@ namespace DraughtsGame.Tests_Cheesboard
             string ExpectedColumns = "ABCDEFGH";
 
             StringBuilder ActualColumns = new StringBuilder(); 
-            ICheesboard cheesboard = new Cheesboard();
+            ICheesboard cheesboard = new Cheesboard(cheesboardInitializer);
             for (int ColumnIndex = 0; ColumnIndex < cheesboard.GetCheesboardWidth(); ColumnIndex++ )
             {
                 ActualColumns.Append(cheesboard.GetColumnName(ColumnIndex));
@@ -121,7 +121,7 @@ namespace DraughtsGame.Tests_Cheesboard
             string ExpectedList = "OneTwoThreeFourFiveSixSevenEight";
 
             StringBuilder ActualRows = new StringBuilder();
-            ICheesboard cheesboard = new Cheesboard();
+            ICheesboard cheesboard = new Cheesboard(cheesboardInitializer);
             for (int RowIndex = 0; RowIndex < cheesboard.GetCheesboardHeight(); RowIndex++)
             {
                 ActualRows.Append(cheesboard.GetRowName(RowIndex));

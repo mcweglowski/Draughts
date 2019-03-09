@@ -80,7 +80,7 @@ namespace DraughtsGame.Tests_MovePawn
 
         public IPawn PickPawn(ICheesboardFieldCoordinates fieldCoordinates)
         {
-            return new Pawn(PlayerColor.Red, new List<MoveCoordinate>(), new Cheesboard());
+            return new Pawn(PlayerColor.Red, new List<MoveCoordinate>(), new Cheesboard(new CheesboardInitializerMock()));
         }
 
         public IPawn GetPawn(ICheesboardFieldCoordinates fieldCoordinates)
@@ -106,6 +106,17 @@ namespace DraughtsGame.Tests_MovePawn
         public string GetRowName(int index)
         {
             throw new System.NotImplementedException();
+        }
+    }
+
+    class CheesboardInitializerMock : ICheesboardInitializer
+    {
+        public void InitNewCheesboard()
+        {
+        }
+
+        public void SetCheesboard(ICheesboard cheesboard)
+        {
         }
     }
 }

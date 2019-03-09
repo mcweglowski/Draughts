@@ -13,7 +13,7 @@ namespace DraughtsGame
         private const int ColumnsDimension = 0;
         private const int RowsDimension = 1;
 
-        public Cheesboard()
+        private Cheesboard()
         {
 
         }

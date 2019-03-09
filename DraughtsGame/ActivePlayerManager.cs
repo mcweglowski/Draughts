@@ -16,7 +16,6 @@ namespace DraughtsGame
             get { return activePlayer; }
         }
 
-
         public ActivePlayerManager()
         {
             activePlayer = PlayerColor.White;

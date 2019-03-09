@@ -17,9 +17,12 @@ namespace DraughtsConsole
             DraughtsCheesboardPrinter draughtsCheesboardPrinter = new DraughtsCheesboardPrinter(draughtsGame.Cheesboard);
             draughtsCheesboardPrinter.PrintCheesboard();
 
-            Console.WriteLine("");
+            Console.WriteLine();
+            Console.WriteLine("Player: " + draughtsGame.ActivePlayer.ToString());
             Console.WriteLine("Make move...");
             Console.ReadKey();
+
+
 
 
             CheesboardFieldCoordinates sourceFieldCoordinates = new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B);
