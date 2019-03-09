@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using DraughtsGame.Interfaces;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,10 @@ namespace DraughtsGame.Tests_StringToCheesboardFieldConverterTests
         public void shouldConvertStringToCheesboardField()
         {
             string A4 = "A4";
-            CheesboardFieldCoordinates expectedCheesboardFieldCoordinates = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.A);
+            ICheesboardFieldCoordinates expectedCheesboardFieldCoordinates = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.A);
 
             StringToCheesboardFieldConverter stringToCheesboardFieldConverter = new StringToCheesboardFieldConverter();
-            CheesboardFieldCoordinates actualCheesboardFieldCoordinates = stringToCheesboardFieldConverter.Convert(A4);
+            ICheesboardFieldCoordinates actualCheesboardFieldCoordinates = stringToCheesboardFieldConverter.Convert(A4);
 
             Assert.AreEqual(expectedCheesboardFieldCoordinates, actualCheesboardFieldCoordinates);
         }
