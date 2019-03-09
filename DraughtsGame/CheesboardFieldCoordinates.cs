@@ -1,4 +1,5 @@
 ﻿using DraughtsGame.Interfaces;
+using DraughtsGame.NullObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,19 +29,6 @@ namespace DraughtsGame
         {
             string RowDisplayNumber = ((int)(Row + 1)).ToString();
             return Column.ToString() + RowDisplayNumber;
-        }
-
-        private class NullCheesboardFieldCoordinates : ICheesboardFieldCoordinates
-        {
-            public CheesboardRow Row
-            {
-                get { return CheesboardRow.NotDefined; }
-            }
-
-
-            public CheesboardColumn Column
-            { get { return CheesboardColumn.NotDefined; }
-            }
         }
 
         public override bool Equals(object obj)

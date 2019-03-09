@@ -64,7 +64,10 @@
     <Compile Include="Interfaces\IPawn.cs" />
     <Compile Include="Interfaces\IMove.cs" />
     <Compile Include="MoveCoordinates.cs" />
-    <Compile Include="NullMove.cs" />
+    <Compile Include="NullObjects\NullMove.cs" />
+    <Compile Include="NullObjects\NullCheesboardField.cs" />
+    <Compile Include="NullObjects\NullCheesboardFieldCoordinates.cs" />
+    <Compile Include="NullObjects\NullPawn.cs" />
     <Compile Include="Pawn.cs" />
     <Compile Include="PawnBeat.cs" />
     <Compile Include="PawnMove.cs" />

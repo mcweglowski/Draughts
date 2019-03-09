@@ -1,4 +1,5 @@
 ﻿using DraughtsGame.Interfaces;
+using DraughtsGame.NullObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,25 +47,5 @@ namespace DraughtsGame
 
             return move.Move(sourceField, destinationField);
         }
-
-        private class NullPawn : IPawn
-        {
-            private readonly IList<MoveCoordinate> MoveDirections = new List<MoveCoordinate>();
-            public PlayerColor GetPlayerColor()
-            {
-                return PlayerColor.NotDefined;
-            }
-
-            public bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
-            {
-                return false;
-            }
-
-            IList<MoveCoordinate> IPawn.GetMoveCoordinates()
-            {
-                return MoveDirections;
-            }
-        }
-
     }
 }

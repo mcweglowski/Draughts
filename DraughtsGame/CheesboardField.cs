@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.NullObjects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,7 @@ namespace DraughtsGame
 {
     public class CheesboardField : ICheesboardField
     {
-        public static readonly ICheesboardField Null = new NullField();
+        public static readonly ICheesboardField Null = new NullCheesboardField();
         private FieldColor fieldColor;
         private IPawn pawn = Pawn.Null;
 
@@ -45,37 +46,6 @@ namespace DraughtsGame
         public void SetPawn(IPawn pawn)
         {
             this.pawn = pawn;
-        }
-
-        private class NullField : ICheesboardField
-        {
-            public FieldColor GetColor()
-            {
-                return FieldColor.NotDefined;
-            }
-
-            public IPawn GetPawn()
-            {
-                return Pawn.Null;
-            }
-
-            public bool IsEmpty()
-            {
-                return false;
-            }
-
-            public IPawn PickPawn()
-            {
-                return Pawn.Null;
-            }
-
-            public void SetColor(FieldColor fieldColor)
-            {
-            }
-
-            public void SetPawn(IPawn pawn)
-            {
-            }
         }
     }
 }
