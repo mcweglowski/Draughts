@@ -11,6 +11,7 @@ namespace DraughtsGame
     {
         public ICheesboard Cheesboard { get; }
         IActivePlayerManager activePlayerManager = new ActivePlayerManager();
+        StringToCheesboardFieldConverter stringToCheesboardFieldConverter = new StringToCheesboardFieldConverter();
 
         public string GameCommand { get; }
 
@@ -30,7 +31,16 @@ namespace DraughtsGame
             Cheesboard.InitializeGame(gameInitializer);
         }
 
-        public bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+        public bool Move(string sourceField, string destinationField)
+        {
+            ICheesboardFieldCoordinates sourceFieldCoordinates = stringToCheesboardFieldConverter.Convert(sourceField);
+            ICheesboardFieldCoordinates destinationFieldCoordinates = stringToCheesboardFieldConverter.Convert(destinationField);
+
+            return Move(sourceFieldCoordinates, destinationFieldCoordinates);
+
+        }
+
+        public bool Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField)
         {
             IPawn pawn = Cheesboard.GetPawn(sourceField);
 

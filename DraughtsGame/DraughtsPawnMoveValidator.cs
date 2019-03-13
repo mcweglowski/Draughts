@@ -21,7 +21,7 @@ namespace DraughtsGame
             this.cheesboard = cheesboard;
         }
 
-        public IMove IsMoveAvaliable(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+        public IMove IsMoveAvaliable(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField)
         {
             if (false == IsFieldEmpty(destinationField))
             {
@@ -32,7 +32,7 @@ namespace DraughtsGame
             return IsDestinationFieldInAvaliableDestinationFieldsForPawn(destinationField, avaliableDestinationFields);
         }
 
-        private IMove IsDestinationFieldInAvaliableDestinationFieldsForPawn(CheesboardFieldCoordinates destinationField, IList<MoveParameters> avaliableDestinationFields)
+        private IMove IsDestinationFieldInAvaliableDestinationFieldsForPawn(ICheesboardFieldCoordinates destinationField, IList<MoveParameters> avaliableDestinationFields)
         {
             MoveType moveType = avaliableDestinationFields.Where(x => x.CheesboardFieldCoordinates.Row == destinationField.Row && x.CheesboardFieldCoordinates.Column == destinationField.Column).Select(x => x.MoveType).DefaultIfEmpty(MoveType.None).FirstOrDefault();
 
@@ -104,7 +104,7 @@ namespace DraughtsGame
             return true;
         }
 
-        private bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        private bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates)
         {
             return cheesboard.IsFieldEmpty(fieldCoordinates);
         }

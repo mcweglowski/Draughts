@@ -59,7 +59,7 @@ namespace DraughtsGame.Tests_MovePawn
             throw new System.NotImplementedException();
         }
 
-        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        public bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }

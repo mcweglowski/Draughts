@@ -132,7 +132,7 @@ namespace DraughtsGame.Tests_CheesboardInitializer
             throw new NotImplementedException();
         }
 
-        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        public bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }

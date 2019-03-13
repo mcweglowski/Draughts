@@ -10,7 +10,7 @@ namespace DraughtsGame
     public interface ICheesboard
     {
         FieldColor GetFieldColor(ICheesboardFieldCoordinates fieldCoordinates);
-        bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates);
+        bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates);
 		bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates);
         void SetFieldColor(ICheesboardFieldCoordinates fieldCoordinates, FieldColor fieldColor);
         void SetPawn(ICheesboardFieldCoordinates fieldCoordinates, IPawn pawn);

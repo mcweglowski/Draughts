@@ -9,7 +9,8 @@ namespace DraughtsGame.Interfaces
     public interface IDraughtsEngine
     {
         ICheesboard Cheesboard { get; }
-        bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField);
+        bool Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField);
+        bool Move(string sourceField, string destinationField);
         string GameCommand { get; }
         PlayerColor ActivePlayer { get; }
     }

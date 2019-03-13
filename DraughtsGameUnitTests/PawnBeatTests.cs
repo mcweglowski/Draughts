@@ -112,7 +112,7 @@ namespace DraughtsGame.Tests_PawnBeat
             return cheesboardField.GetPawn();
         }
 
-        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        public bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }

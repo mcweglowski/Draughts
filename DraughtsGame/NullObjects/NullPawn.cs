@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace DraughtsGame.NullObjects
             return PlayerColor.NotDefined;
         }
 
-        public bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+        public bool Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField)
         {
             return false;
         }

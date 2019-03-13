@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,6 @@ namespace DraughtsGame
     {
         IList<MoveCoordinate> GetMoveCoordinates();
         PlayerColor GetPlayerColor();
-        bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField);
+        bool Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField);
     }
 }

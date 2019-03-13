@@ -77,7 +77,7 @@ namespace DraughtsGame
             SetField(fieldCoordinates, new CheesboardField(fieldColor));
         }
 
-        public bool IsFieldEmpty(CheesboardFieldCoordinates fieldCoordinates)
+        public bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates)
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             return cheesboardField.IsEmpty();

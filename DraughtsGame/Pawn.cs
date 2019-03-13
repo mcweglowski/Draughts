@@ -39,7 +39,7 @@ namespace DraughtsGame
             return PawnColor;
         }
 
-        public bool Move(CheesboardFieldCoordinates sourceField, CheesboardFieldCoordinates destinationField)
+        public bool Move(ICheesboardFieldCoordinates sourceField, ICheesboardFieldCoordinates destinationField)
         {
             DraughtsPawnMoveValidator draughtsPawnMoveValidator = new DraughtsPawnMoveValidator(cheesboard);
 
