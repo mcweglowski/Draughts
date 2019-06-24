@@ -9,26 +9,38 @@ namespace DraughtsGame
 {
     public class DraughtsEngine : IDraughtsEngine
     {
-        public ICheesboard Cheesboard { get; }
+        public ICheesboard Cheesboard { get; set; }
         IActivePlayerManager activePlayerManager = new ActivePlayerManager();
         StringToCheesboardFieldConverter stringToCheesboardFieldConverter = new StringToCheesboardFieldConverter();
+        private IList<IInitializer> Initializers = new List<IInitializer>(); 
 
-        public string GameCommand { get; }
+        public string GameCommand { get; set; }
 
         public PlayerColor ActivePlayer
         {
             get { return activePlayerManager.ActivePlayer; }
         }
 
-        private DraughtsEngine()
+        public DraughtsEngine()
         {
 
         }
 
-        public DraughtsEngine(ICheesboard cheesboard, IGameInitializer gameInitializer)
+        public DraughtsEngine(ICheesboard cheesboard)
         {
-            Cheesboard = cheesboard;
-            Cheesboard.InitializeGame(gameInitializer);
+            Cheesboard = cheesboard;}
+
+        public void AddInitializer(IInitializer initializer)
+        {
+            Initializers.Add(initializer);
+        }
+
+        public void InitializeGame()
+        {
+            foreach (IInitializer initializer in Initializers)
+            {
+                initializer.Initialize(Cheesboard);
+            }
         }
 
         public bool Move(string sourceField, string destinationField)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class DraughtsGameTwoRowsInitializer : IGameInitializer
+    public class DraughtsGameTwoRowsInitializer : IInitializer
     {
         private ICheesboard cheesboard;
 
@@ -21,7 +21,7 @@ namespace DraughtsGame
             this.cheesboard = cheesboard;
         }
 
-        public void InitializeNewGame(ICheesboard cheesboard)
+        private void InitializeNewGame(ICheesboard cheesboard)
         {
             this.cheesboard = cheesboard;
             InitializeNewGame();
@@ -92,6 +92,11 @@ namespace DraughtsGame
             }
 
             return CheesboardColumn.B;
+        }
+
+        public void Initialize(ICheesboard cheesboard)
+        {
+            InitializeNewGame(cheesboard);
         }
     }
 }

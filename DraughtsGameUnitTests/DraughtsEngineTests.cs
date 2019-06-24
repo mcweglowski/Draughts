@@ -63,7 +63,12 @@ namespace DraughtsGame.Tests_DraughtsEngine
         [TestMethod]
         public void shouldHaveWhitePlayerAsActiveWhenGameStarts()
         {
-            IDraughtsEngine draughtsEngine = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+            IDraughtsEngine draughtsEngine = new DraughtsEngine();
+            draughtsEngine.Cheesboard = new Cheesboard();
+            draughtsEngine.AddInitializer(new CheesboardInitializer());
+            draughtsEngine.AddInitializer(new DraughtsGameTwoRowsInitializer());
+            draughtsEngine.InitializeGame();
+
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 
             Assert.AreEqual(PlayerColor.White, activePlayer);
@@ -72,11 +77,13 @@ namespace DraughtsGame.Tests_DraughtsEngine
         [TestMethod]
         public void shouldSwithPlayerToOponentWhenMovePawnReturnTrue()
         {
-            ICheesboard cheesboard = new Cheesboard(new CheesboardInitializer());
+            ICheesboard cheesboard = new Cheesboard();
 
-            IDraughtsEngine draughtsEngine = new DraughtsEngine(cheesboard, new DraughtsGameTwoRowsInitializer());
+            IInitializer initializer = new CheesboardInitializer();
+            initializer.Initialize(cheesboard);
+
+            IDraughtsEngine draughtsEngine = new DraughtsEngine(cheesboard);
            
-
             bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.C));
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 
@@ -87,7 +94,11 @@ namespace DraughtsGame.Tests_DraughtsEngine
         [TestMethod]
         public void shouldHaveWhitePlayerAsActiveAfterTwoSuccesfullMoves()
         {
-            IDraughtsEngine draughtsEngine = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+            IDraughtsEngine draughtsEngine = new DraughtsEngine();
+            draughtsEngine.Cheesboard = new Cheesboard();
+            draughtsEngine.AddInitializer(new CheesboardInitializer());
+            draughtsEngine.AddInitializer(new DraughtsGameTwoRowsInitializer());
+
             bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.C));
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 
@@ -102,7 +113,11 @@ namespace DraughtsGame.Tests_DraughtsEngine
         [TestMethod]
         public void shouldNotSwitchPlayerWhenMoveFailed()
         {
-            IDraughtsEngine draughtsEngine = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+            IDraughtsEngine draughtsEngine = new DraughtsEngine();
+            draughtsEngine.Cheesboard = new Cheesboard();
+            draughtsEngine.AddInitializer(new CheesboardInitializer());
+            draughtsEngine.AddInitializer(new DraughtsGameTwoRowsInitializer());
+
             bool moveResult = draughtsEngine.Move(new CheesboardFieldCoordinates(CheesboardRow.Two, CheesboardColumn.B), new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.D));
             PlayerColor activePlayer = draughtsEngine.ActivePlayer;
 

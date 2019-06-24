@@ -13,20 +13,12 @@ namespace DraughtsGame
         private const int ColumnsDimension = 0;
         private const int RowsDimension = 1;
 
-        private Cheesboard()
+        public Cheesboard()
         {
-
+            ResetCheesboardFields();
         }
 
-        public Cheesboard(ICheesboardInitializer cheesboardInitializer)
-        {
-            InitializeCheesboardFields();
-
-            cheesboardInitializer.SetCheesboard(this);
-            cheesboardInitializer.InitNewCheesboard();
-        }
-
-        private void InitializeCheesboardFields()
+        private void ResetCheesboardFields()
         {
             for (int row = 0; row < GetCheesboardHeight(); row++)                
             {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DraughtsGame;
+using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,16 @@ namespace DraughtsWPF
         public MainWindow()
         {
             InitializeComponent();
+            InitializeGame();
+        }
+
+        private void InitializeGame()
+        {
+            IDraughtsEngine draughtsGame = new DraughtsEngine();
+            draughtsGame.Cheesboard = new Cheesboard();
+            draughtsGame.AddInitializer(new CheesboardInitializer());
+            draughtsGame.AddInitializer(new DraughtsGameTwoRowsInitializer());
+            draughtsGame.InitializeGame();
         }
     }
 }

@@ -13,7 +13,14 @@ namespace DraughtsConsole
     {
         static void Main(string[] args)
         {
-            IDraughtsEngine draughtsGame = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+            // IDraughtsEngine draughtsGame = new DraughtsEngine(new Cheesboard(new CheesboardInitializer()), new DraughtsGameTwoRowsInitializer());
+
+            IDraughtsEngine draughtsGame = new DraughtsEngine();
+            draughtsGame.Cheesboard = new Cheesboard();
+            draughtsGame.AddInitializer(new CheesboardInitializer());
+            draughtsGame.AddInitializer(new DraughtsGameTwoRowsInitializer());
+            draughtsGame.InitializeGame();
+
             DraughtsCheesboardPrinter draughtsCheesboardPrinter = new DraughtsCheesboardPrinter(draughtsGame.Cheesboard);
             string command = string.Empty;
             ICheesboardFieldCoordinates sourceField = CheesboardFieldCoordinates.Null;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DraughtsGame.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DraughtsGame
 {
-    public class CheesboardInitializer : ICheesboardInitializer
+    public class CheesboardInitializer : IInitializer
     {
         private ICheesboard cheesboard;
         public CheesboardInitializer() { }
@@ -15,12 +16,12 @@ namespace DraughtsGame
             this.cheesboard = cheesboard;
         }
 
-        public void SetCheesboard(ICheesboard cheesboard)
+        private void SetCheesboard(ICheesboard cheesboard)
         {
             this.cheesboard = cheesboard;
         }
 
-        public void InitNewCheesboard()
+        private void InitNewCheesboard()
         {
             CheesboardFieldCoordinates fieldCoordinates = new CheesboardFieldCoordinates();
             FieldColor lastFieldColor = FieldColor.Black;
@@ -47,6 +48,12 @@ namespace DraughtsGame
                 return FieldColor.Black;
 
             return FieldColor.White;
+        }
+
+        public void Initialize(ICheesboard cheesboard)
+        {
+            SetCheesboard(cheesboard);
+            InitNewCheesboard();
         }
     }
 }

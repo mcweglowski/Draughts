@@ -12,8 +12,9 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         public void InitNewCheesboard32BlackFieldsExpectedTest()
         {
             CheesboardStub cheesboard = new CheesboardStub();
-            CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
-            draughtsCheesboardInitializer.InitNewCheesboard();
+
+            IInitializer initializer = new CheesboardInitializer();
+            initializer.Initialize(cheesboard);
 
             Assert.AreEqual(32, cheesboard.blackFieldsCount, string.Format("Initialized cheeseboard should have 32 black fields, but it has {0}.", cheesboard.blackFieldsCount));
         }
@@ -22,8 +23,8 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         public void InitNewCheesboard32WhiteFieldsExpectedTest()
         {
             CheesboardStub cheesboard = new CheesboardStub();
-            CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
-            draughtsCheesboardInitializer.InitNewCheesboard();
+            IInitializer draughtsCheesboardInitializer = new CheesboardInitializer();
+            draughtsCheesboardInitializer.Initialize(cheesboard);
 
             Assert.AreEqual(32, cheesboard.whiteFieldsCount, string.Format("Initialized cheeseboard should have 32 white fields, but it has {0}.", cheesboard.whiteFieldsCount));
         }
@@ -32,8 +33,8 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         public void InitNewCheesboardNoOtherThanWhiteBlackFieldsTest()
         {
             CheesboardStub cheesboard = new CheesboardStub();
-            CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
-            draughtsCheesboardInitializer.InitNewCheesboard();
+            IInitializer draughtsCheesboardInitializer = new CheesboardInitializer();
+            draughtsCheesboardInitializer.Initialize(cheesboard);
 
             Assert.AreEqual(0, cheesboard.otherFieldsCount, string.Format("Initialized cheeseboard should have 0 fields other than black or white, but it has {0} of them.", cheesboard.whiteFieldsCount));
         }
@@ -42,8 +43,8 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         public void InitNewCheesboartA1FieldShouldBeEmptyBlack()
         {
             CheesboardStub cheesboard = new CheesboardStub();
-            CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
-            draughtsCheesboardInitializer.InitNewCheesboard();
+            IInitializer draughtsCheesboardInitializer = new CheesboardInitializer();
+            draughtsCheesboardInitializer.Initialize(cheesboard);
 
             Assert.AreEqual(FieldColor.Black, cheesboard.A1field, "A1 field should be EmptyBlack.");
         }
@@ -52,8 +53,8 @@ namespace DraughtsGame.Tests_CheesboardInitializer
         public void InitNewCheesboartH8FieldShouldBeEmptyBlack()
         {
             CheesboardStub cheesboard = new CheesboardStub();
-            CheesboardInitializer draughtsCheesboardInitializer = new CheesboardInitializer(cheesboard);
-            draughtsCheesboardInitializer.InitNewCheesboard();
+            IInitializer draughtsCheesboardInitializer = new CheesboardInitializer();
+            draughtsCheesboardInitializer.Initialize(cheesboard);
 
             Assert.AreEqual(FieldColor.Black, cheesboard.H8field, "H8 field should be EmptyBlack.");
         }

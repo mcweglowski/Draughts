@@ -61,6 +61,7 @@
     <Compile Include="Interfaces\ICheesboardInitializer.cs" />
     <Compile Include="Interfaces\IDraughtsEngine.cs" />
     <Compile Include="Interfaces\IGameInitializer.cs" />
+    <Compile Include="Interfaces\IInitializer.cs" />
     <Compile Include="Interfaces\IPawn.cs" />
     <Compile Include="Interfaces\IMove.cs" />
     <Compile Include="MoveCoordinates.cs" />

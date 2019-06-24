@@ -19,7 +19,10 @@ namespace DraughtsGame.Tests_PawnMoveValidatorTests
         [TestInitialize]
         public void TestInitialize()
         {
-            cheesboard = new Cheesboard(new CheesboardInitializer());
+            cheesboard = new Cheesboard();
+
+            IInitializer initializer = new CheesboardInitializer();
+            initializer.Initialize(cheesboard);
 
             whitePawn = new Pawn(PlayerColor.White, new List<MoveCoordinate>() { new MoveCoordinate(1, -1), new MoveCoordinate(1, 1) }, cheesboard);
             redPawn = new Pawn(PlayerColor.Red, new List<MoveCoordinate>() { new MoveCoordinate(-1, -1), new MoveCoordinate(-1, 1) }, cheesboard);
