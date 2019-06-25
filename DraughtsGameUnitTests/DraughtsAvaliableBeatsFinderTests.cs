@@ -12,7 +12,7 @@ namespace DraughtsGameUnitTests_DraughtsAvaliableBeatsFinder
     [TestClass()]
     public class DraughtsAvaliableBeatsFinderTests
     {
-        ICheesboard cheesboard;
+        private ICheesboard cheesboard;
 
         CheesboardFieldCoordinates sourceFieldD4 = new CheesboardFieldCoordinates(CheesboardRow.Four, CheesboardColumn.D);
         CheesboardFieldCoordinates occupiedFieldC3 = new CheesboardFieldCoordinates(CheesboardRow.Three, CheesboardColumn.C);
@@ -23,7 +23,7 @@ namespace DraughtsGameUnitTests_DraughtsAvaliableBeatsFinder
         [TestInitialize()]
         public void TestInitialize()
         {
-            ICheesboard cheesboard = new Cheesboard();
+            cheesboard = new Cheesboard();
 
             IInitializer initializer = new CheesboardInitializer();
             initializer.Initialize(cheesboard);            
