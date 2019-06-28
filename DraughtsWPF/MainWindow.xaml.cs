@@ -1,5 +1,6 @@
 ﻿using DraughtsGame;
 using DraughtsGame.Interfaces;
+using DraughtsWPF.CheesboardDrawTools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace DraughtsWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private IDraughtsEngine draughtsGame;
         public MainWindow()
         {
             InitializeComponent();
@@ -30,11 +32,17 @@ namespace DraughtsWPF
 
         private void InitializeGame()
         {
-            IDraughtsEngine draughtsGame = new DraughtsEngine();
+            draughtsGame = new DraughtsEngine();
             draughtsGame.Cheesboard = new Cheesboard();
             draughtsGame.AddInitializer(new CheesboardInitializer());
             draughtsGame.AddInitializer(new DraughtsGameTwoRowsInitializer());
             draughtsGame.InitializeGame();
+        }
+
+        private void BtnResetGame_Click(object sender, RoutedEventArgs e)
+        {
+            CheesboardDrawer cheesboardDrawer = new CheesboardDrawer(draughtsGame.Cheesboard);
+            cheesboardDrawer.Draw(canvas);
         }
     }
 }
