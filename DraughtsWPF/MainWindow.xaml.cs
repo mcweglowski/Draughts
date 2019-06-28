@@ -1,6 +1,7 @@
 ﻿using DraughtsGame;
 using DraughtsGame.Interfaces;
 using DraughtsWPF.CheesboardDrawTools;
+using DraughtsWPF.DiagnosticTools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,19 @@ namespace DraughtsWPF
 
             PawnsDrawer pawnsDrawer = new PawnsDrawer(draughtsGame.Cheesboard);
             pawnsDrawer.Draw(canvas);
+
+            CoordinatesReader coordinatesReader = new CoordinatesReader();
+            coordinatesReader.Display = lblCurrentCoordinates;
+
+            foreach (UIElement element in canvas.Children)
+            {
+                element.MouseEnter += coordinatesReader.MouseEnter;
+            }
+        }
+
+        private void Element_MouseEnter(object sender, MouseEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
