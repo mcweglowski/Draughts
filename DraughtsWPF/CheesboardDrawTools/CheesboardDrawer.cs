@@ -37,7 +37,6 @@ namespace DraughtsWPF.CheesboardDrawTools
                     FieldColor fieldColor = Cheesboard.GetFieldColor(cheesboardFieldCoordinates);
                     currentBrush = GetCurrentBrush(fieldColor);
 
-
                     CheesboardFieldGraphic cheesboardFieldGraphic = new CheesboardFieldGraphic();
                     cheesboardFieldGraphic.EdgeWidth = edgeWidth;
                     cheesboardFieldGraphic.Fill = currentBrush;

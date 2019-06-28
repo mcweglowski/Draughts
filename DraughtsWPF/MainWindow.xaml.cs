@@ -43,6 +43,9 @@ namespace DraughtsWPF
         {
             CheesboardDrawer cheesboardDrawer = new CheesboardDrawer(draughtsGame.Cheesboard);
             cheesboardDrawer.Draw(canvas);
+
+            PawnsDrawer pawnsDrawer = new PawnsDrawer(draughtsGame.Cheesboard);
+            pawnsDrawer.Draw(canvas);
         }
     }
 }
