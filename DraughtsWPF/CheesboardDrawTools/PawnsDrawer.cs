@@ -50,8 +50,8 @@ namespace DraughtsWPF.CheesboardDrawTools
                     pawnGraphic.Fill = currentBrush;
 
                     canvas.Children.Add(pawnGraphic);
-                    Canvas.SetLeft(pawnGraphic, row * edgeWidth + pawnMargin);
-                    Canvas.SetTop(pawnGraphic, column * edgeWidth + pawnMargin);
+                    Canvas.SetLeft(pawnGraphic, column * edgeWidth + pawnMargin);
+                    Canvas.SetTop(pawnGraphic, row * edgeWidth + pawnMargin);
                 }
             }
         }

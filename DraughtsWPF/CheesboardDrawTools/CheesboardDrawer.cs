@@ -43,8 +43,9 @@ namespace DraughtsWPF.CheesboardDrawTools
                     cheesboardFieldGraphic.CheesboardFieldCoordinates = cheesboardFieldCoordinates;
 
                     canvas.Children.Add(cheesboardFieldGraphic);
-                    Canvas.SetLeft(cheesboardFieldGraphic, row * edgeWidth);
-                    Canvas.SetTop(cheesboardFieldGraphic, column * edgeWidth);
+                    Canvas.SetLeft(cheesboardFieldGraphic, column * edgeWidth);
+                    Canvas.SetTop(cheesboardFieldGraphic, row * edgeWidth);
+
                 }
             }
 
