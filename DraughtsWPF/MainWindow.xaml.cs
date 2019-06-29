@@ -2,6 +2,7 @@
 using DraughtsGame.Interfaces;
 using DraughtsWPF.CheesboardDrawTools;
 using DraughtsWPF.DiagnosticTools;
+using DraughtsWPF.Move;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,18 +43,35 @@ namespace DraughtsWPF
 
         private void BtnResetGame_Click(object sender, RoutedEventArgs e)
         {
-            CheesboardDrawer cheesboardDrawer = new CheesboardDrawer(draughtsGame.Cheesboard);
-            cheesboardDrawer.Draw(canvas);
+            IList<IWPFDrawer> drawers = new List<IWPFDrawer>()
+            {
+                new CheesboardDrawer(draughtsGame.Cheesboard),
+                new PawnsDrawer(draughtsGame.Cheesboard),
+            };
 
-            PawnsDrawer pawnsDrawer = new PawnsDrawer(draughtsGame.Cheesboard);
-            pawnsDrawer.Draw(canvas);
+            foreach (IWPFDrawer drawer in drawers)
+            {
+                drawer.Draw(canvas);
+            }
 
             CoordinatesReader coordinatesReader = new CoordinatesReader();
             coordinatesReader.Display = lblCurrentCoordinates;
 
+            PawnMover pawnMover = new PawnMover(canvas);
+
             foreach (UIElement element in canvas.Children)
             {
                 element.MouseEnter += coordinatesReader.MouseEnter;
+            }
+
+            foreach (UIElement element in canvas.Children)
+            {
+                if (element is Ellipse)
+                {
+                    element.MouseLeftButtonDown += pawnMover.MouseLeftButtonDown;
+                    element.MouseLeftButtonUp += pawnMover.MouseLeftButtonUp;
+                    element.MouseMove += pawnMover.MouseMove;
+                }
             }
         }
 

@@ -12,7 +12,7 @@ using System.Windows.Shapes;
 
 namespace DraughtsWPF.CheesboardDrawTools
 {
-    public class CheesboardDrawer
+    public class CheesboardDrawer : IWPFDrawer
     {
         public ICheesboard Cheesboard { get; }
         private SolidColorBrush solidBlackBrush = new SolidColorBrush(Colors.LightGray);

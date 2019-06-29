@@ -11,7 +11,7 @@ using System.Windows.Shapes;
 
 namespace DraughtsWPF.CheesboardDrawTools
 {
-    public class PawnsDrawer
+    public class PawnsDrawer : IWPFDrawer
     {
         private ICheesboard Cheesboard { get; set; }
         private SolidColorBrush solidRedBrush = new SolidColorBrush(Colors.IndianRed);
