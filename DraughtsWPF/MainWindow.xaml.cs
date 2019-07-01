@@ -1,6 +1,7 @@
 ﻿using DraughtsGame;
 using DraughtsGame.Interfaces;
 using DraughtsWPF.CheesboardDrawTools;
+using DraughtsWPF.CheesboardGraphicElements;
 using DraughtsWPF.DiagnosticTools;
 using DraughtsWPF.Move;
 using System;
@@ -39,6 +40,8 @@ namespace DraughtsWPF
             draughtsGame.AddInitializer(new CheesboardInitializer());
             draughtsGame.AddInitializer(new DraughtsGameTwoRowsInitializer());
             draughtsGame.InitializeGame();
+
+            lblActivePlayer.Content = draughtsGame.ActivePlayer.ToString();
         }
 
         private void BtnResetGame_Click(object sender, RoutedEventArgs e)
@@ -58,10 +61,23 @@ namespace DraughtsWPF
             coordinatesReader.Display = lblCurrentCoordinates;
 
             PawnMover pawnMover = new PawnMover(canvas);
+            pawnMover.ActivePlayer = lblActivePlayer;
+            pawnMover.draughtsEngine = draughtsGame;
 
             foreach (UIElement element in canvas.Children)
             {
                 element.MouseEnter += coordinatesReader.MouseEnter;
+            }
+
+            foreach (UIElement element in canvas.Children)
+            {
+                if (element is CheesboardFieldGraphic)
+                {
+                    element.AllowDrop = true;
+                    element.MouseEnter += pawnMover.MouseEnter;
+                    element.DragEnter += pawnMover.DragEnter;
+                    element.DragOver += pawnMover.DragOver;
+                }
             }
 
             foreach (UIElement element in canvas.Children)
@@ -71,13 +87,9 @@ namespace DraughtsWPF
                     element.MouseLeftButtonDown += pawnMover.MouseLeftButtonDown;
                     element.MouseLeftButtonUp += pawnMover.MouseLeftButtonUp;
                     element.MouseMove += pawnMover.MouseMove;
+                    element.Drop += pawnMover.Drop;
                 }
             }
-        }
-
-        private void Element_MouseEnter(object sender, MouseEventArgs e)
-        {
-            throw new NotImplementedException();
         }
     }
 }

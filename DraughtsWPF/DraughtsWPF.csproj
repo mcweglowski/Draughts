@@ -67,7 +67,7 @@
     <Compile Include="CheesboardDrawTools\PawnsDrawer.cs" />
     <Compile Include="CheesboardGraphicElements\CheesboardFieldGraphic.cs" />
     <Compile Include="DiagnosticTools\CoordinatesReader.cs" />
-    <Compile Include="IWPFDrawer.cs" />
+    <Compile Include="CheesboardDrawTools\IWPFDrawer.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
