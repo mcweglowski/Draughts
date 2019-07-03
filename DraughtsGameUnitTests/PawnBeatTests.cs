@@ -170,12 +170,7 @@ namespace DraughtsGame.Tests_PawnBeat
             cheesboardField.SetPawn(pawn);
         }
 
-        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void InitializeGame(IGameInitializer gameInitializer)
+        public bool IsFieldOccupied(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }

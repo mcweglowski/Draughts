@@ -158,17 +158,12 @@ namespace DraughtsGame.Tests_DraughtsEngine
             throw new NotImplementedException();
         }
 
-        public void InitializeGame(IGameInitializer gameInitializer)
-        {
-            throw new NotImplementedException();
-        }
-
         public bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }
 
-        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+        public bool IsFieldOccupied(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new NotImplementedException();
         }

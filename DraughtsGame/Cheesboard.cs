@@ -75,7 +75,7 @@ namespace DraughtsGame
             return cheesboardField.IsEmpty();
         }
 
-		public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+		public bool IsFieldOccupied(ICheesboardFieldCoordinates fieldCoordinates)
 		{
 			ICheesboardField cheesboardField = GetField(fieldCoordinates);
 			return false == cheesboardField.IsEmpty();
@@ -115,11 +115,6 @@ namespace DraughtsGame
         {
             ICheesboardField cheesboardField = GetField(fieldCoordinates);
             return cheesboardField.GetPawn();
-        }
-
-        public void InitializeGame(IGameInitializer gameInitializer)
-        {
-            gameInitializer.InitializeNewGame(this);
         }
 
         public string GetColumnName(int index)

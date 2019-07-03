@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DraughtsWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="485" Width="448">
+        Title="MainWindow" Height="509" Width="448">
     <Grid>
         <ToolBar HorizontalAlignment="Left" Height="29" VerticalAlignment="Top" Width="430">
             <Button x:Name="btnResetGame" Content="Reset" VerticalAlignment="Stretch" Width="75" Click="BtnResetGame_Click"/>
@@ -13,6 +13,7 @@
             <Label Name="lblActivePlayer" Content="Player" Height="24" VerticalAlignment="Top" Width="129"/>
         </ToolBar>
         <Canvas Name="canvas" HorizontalAlignment="Left" Height="400" Margin="10,34,0,0" VerticalAlignment="Top" Width="400"/>
+        <Label Name="hitStatus" Content="Label" HorizontalAlignment="Left" Margin="38,439,0,0" VerticalAlignment="Top" Width="196"/>
 
     </Grid>
 </Window>

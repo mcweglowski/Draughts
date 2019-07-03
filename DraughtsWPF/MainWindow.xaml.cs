@@ -60,34 +60,20 @@ namespace DraughtsWPF
             CoordinatesReader coordinatesReader = new CoordinatesReader();
             coordinatesReader.Display = lblCurrentCoordinates;
 
-            PawnMover pawnMover = new PawnMover(canvas);
-            pawnMover.ActivePlayer = lblActivePlayer;
-            pawnMover.draughtsEngine = draughtsGame;
-
             foreach (UIElement element in canvas.Children)
             {
                 element.MouseEnter += coordinatesReader.MouseEnter;
             }
 
+
+            PawnMover2 pm2 = new PawnMover2(canvas);
+            pm2.draughtsEngine = draughtsGame;
+
             foreach (UIElement element in canvas.Children)
             {
                 if (element is CheesboardFieldGraphic)
                 {
-                    element.AllowDrop = true;
-                    element.MouseEnter += pawnMover.MouseEnter;
-                    element.DragEnter += pawnMover.DragEnter;
-                    element.DragOver += pawnMover.DragOver;
-                }
-            }
-
-            foreach (UIElement element in canvas.Children)
-            {
-                if (element is Ellipse)
-                {
-                    element.MouseLeftButtonDown += pawnMover.MouseLeftButtonDown;
-                    element.MouseLeftButtonUp += pawnMover.MouseLeftButtonUp;
-                    element.MouseMove += pawnMover.MouseMove;
-                    element.Drop += pawnMover.Drop;
+                    element.MouseLeftButtonUp += pm2.MouseLeftButtonUp;
                 }
             }
         }

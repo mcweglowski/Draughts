@@ -88,12 +88,7 @@ namespace DraughtsGame.Tests_MovePawn
             throw new System.NotImplementedException();
         }
 
-        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void InitializeGame(IGameInitializer gameInitializer)
+        public bool IsFieldOccupied(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }

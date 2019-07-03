@@ -188,17 +188,12 @@ namespace DraughtsGame.Tests_DraughtsGameTwoRowsInitializer
             throw new System.NotImplementedException();
         }
 
-        public void InitializeGame(IGameInitializer gameInitializer)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public bool IsFieldEmpty(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
 
-        public bool IsFieldOccupied(CheesboardFieldCoordinates fieldCoordinates)
+        public bool IsFieldOccupied(ICheesboardFieldCoordinates fieldCoordinates)
         {
             throw new System.NotImplementedException();
         }
